@@ -12,3 +12,5 @@ python-dotenv
 
 requests
 httpx
+
+redis>=8.1.0

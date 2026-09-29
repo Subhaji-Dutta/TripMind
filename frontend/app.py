@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import requests
 
@@ -11,7 +12,10 @@ st.set_page_config(
     page_icon="✈️",
     layout="wide",
 )
-
+BACKEND_URL = os.getenv(
+    "https://tripmind-backend.vercel.app/",
+    "http://127.0.0.1:8000",
+)
 
 # ============================================================
 # HELPER FUNCTIONS
@@ -295,7 +299,7 @@ if st.button(
             try:
 
                 response = requests.post(
-                    "http://127.0.0.1:8000/api/trip/plan",
+                    f"{BACKEND_URL}/api/trip/plan",
                     json=payload,
                     timeout=180,
                 )
@@ -902,7 +906,7 @@ if "trip" in st.session_state:
             try:
 
                 response = requests.post(
-                    "http://127.0.0.1:8000/api/trip/select",
+                    f"{BACKEND_URL}/api/trip/select",
                     json=selection_payload,
                     timeout=60,
                 )
@@ -979,7 +983,7 @@ if "selected_options" in st.session_state:
             try:
 
                 response = requests.post(
-                    "http://127.0.0.1:8000/api/trip/finalize",
+                    f"{BACKEND_URL}/api/trip/finalize",
                     params={
                         "trip_id": st.session_state["trip_id"],
                     },
@@ -1031,10 +1035,11 @@ if "selected_options" in st.session_state:
 # ============================================================
 # FINAL TRIP RESULTS
 # ============================================================
-
 if "final_result" in st.session_state:
+    st.stop()
 
-    final_result = st.session_state["final_result"]
+final_result = st.session_state.get("final_result")  
+if final_result:
 
     st.divider()
 
@@ -1079,71 +1084,71 @@ if "final_result" in st.session_state:
     # ========================================================
 
 
-st.subheader("🗓️ Itinerary")
+    st.subheader("🗓️ Itinerary")
 
-itinerary = final_result.get("final_itinerary")
+    itinerary = final_result.get("final_itinerary")
 
-if itinerary:
+    if itinerary:
 
-    days = itinerary.get("days", [])
+        days = itinerary.get("days", [])
 
-    for day in days:
+        for day in days:
 
-        st.markdown(
+            st.markdown(
             f"### 📅 {day.get('date', 'Date')}"
-        )
-
-        weather = day.get("weather", {})
-
-        if weather:
-            st.markdown(
-                f"🌤️ **Weather:** "
-                f"{weather.get('temperature_c', 'N/A')}°C — "
-                f"{weather.get('condition', 'N/A')} "
-                f"(Rain probability: "
-                f"{weather.get('rain_probability', 'N/A')}%)"
             )
 
-        st.markdown("---")
+            weather = day.get("weather", {})
 
-        morning = day.get("morning", {})
+            if weather:
+                st.markdown(
+                    f"🌤️ **Weather:** "
+                    f"{weather.get('temperature_c', 'N/A')}°C — "
+                    f"{weather.get('condition', 'N/A')} "
+                    f"(Rain probability: "
+                    f"{weather.get('rain_probability', 'N/A')}%)"
+                )
 
-        if morning.get("name") != "No additional activity selected":
-            st.markdown(
-                f"🌅 **Morning — {morning.get('name', '')}**  \n"
-                f"📍 {morning.get('location', '')}  \n"
-                f"⏱️ {morning.get('duration', '')}"
-            )
-        else:
-            st.markdown("🌅 **Morning:** Free time")
+            st.markdown("---")
 
-        afternoon = day.get("afternoon", {})
+            morning = day.get("morning", {})
 
-        if afternoon.get("name") != "No additional attraction selected":
-            st.markdown(
-                f"🏛️ **Afternoon — {afternoon.get('name', '')}**  \n"
-                f"📍 {afternoon.get('location', '')}  \n"
-                f"⏱️ {afternoon.get('duration', '')}"
-            )
-        else:
-            st.markdown("🏛️ **Afternoon:** Free time")
+            if morning.get("name") != "No additional activity selected":
+                st.markdown(
+                    f"🌅 **Morning — {morning.get('name', '')}**  \n"
+                    f"📍 {morning.get('location', '')}  \n"
+                    f"⏱️ {morning.get('duration', '')}"
+                )
+            else:
+                st.markdown("🌅 **Morning:** Free time")
 
-        evening = day.get("evening", {})
+            afternoon = day.get("afternoon", {})
 
-        if evening.get("name") != "No restaurant selected":
-            st.markdown(
-                f"🍽️ **Evening — {evening.get('name', '')}**  \n"
-                f"📍 {evening.get('location', '')}  \n"
-                f"🍴 {evening.get('cuisine', '')}"
-            )
-        else:
-            st.markdown("🍽️ **Evening:** Free time")
+            if afternoon.get("name") != "No additional attraction selected":
+                st.markdown(
+                    f"🏛️ **Afternoon — {afternoon.get('name', '')}**  \n"
+                    f"📍 {afternoon.get('location', '')}  \n"
+                    f"⏱️ {afternoon.get('duration', '')}"
+                )
+            else:
+                st.markdown("🏛️ **Afternoon:** Free time")
 
-        st.divider()
+            evening = day.get("evening", {})
 
-else:
+            if evening.get("name") != "No restaurant selected":
+                st.markdown(
+                    f"🍽️ **Evening — {evening.get('name', '')}**  \n"
+                    f"📍 {evening.get('location', '')}  \n"
+                    f"🍴 {evening.get('cuisine', '')}"
+                )
+            else:
+                st.markdown("🍽️ **Evening:** Free time")
 
-    st.info("No itinerary was generated.")
+            st.divider()
+
+    else:
+
+        st.info("No itinerary was generated.")
 
 
 
