@@ -1,74 +1,65 @@
 import json
-from pathlib import Path
+import os
 from typing import Dict
+
+import redis
+from dotenv import load_dotenv
 
 from backend.models.trip import TripState
 
 
-DATA_DIR = Path(__file__).resolve().parent / "data"
-DATA_FILE = DATA_DIR / "trips.json"
+load_dotenv(".env.local")
+load_dotenv(".env")
 
 
-def _load_trips() -> Dict[str, TripState]:
-    if not DATA_FILE.exists():
-        return {}
+REDIS_URL = os.getenv("REDIS_URL")
 
-    try:
-        with open(DATA_FILE, "r", encoding="utf-8") as file:
-            data = json.load(file)
-
-    except (json.JSONDecodeError, OSError):
-        return {}
-
-    trips = {}
-
-    for trip_id, trip_data in data.items():
-        # Backward compatibility for trips created
-        # before the source field was added.
-        if "source" not in trip_data.get("request", {}):
-            trip_data["request"]["source"] = "Kolkata"
-
-        trips[trip_id] = TripState.model_validate(trip_data)
-
-    return trips
+if not REDIS_URL:
+    raise RuntimeError("REDIS_URL is not configured.")
 
 
-def _save_trips(trips: Dict[str, TripState]) -> None:
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
+redis_client = redis.from_url(
+    REDIS_URL,
+    decode_responses=True,
+)
 
-    data = {
-        trip_id: state.model_dump(mode="json")
-        for trip_id, state in trips.items()
-    }
+TRIP_KEY_PREFIX = "tripmind:trip:"
 
-    temp_file = DATA_FILE.with_suffix(".tmp")
 
-    with open(temp_file, "w", encoding="utf-8") as file:
-        json.dump(data, file, indent=2, ensure_ascii=False)
-
-    temp_file.replace(DATA_FILE)
+def _trip_key(trip_id: str) -> str:
+    return f"{TRIP_KEY_PREFIX}{trip_id}"
 
 
 def save_trip(trip_id: str, state: TripState) -> None:
-    trips = _load_trips()
-    trips[trip_id] = state
-    _save_trips(trips)
+    data = state.model_dump(mode="json")
+
+    redis_client.set(
+        _trip_key(trip_id),
+        json.dumps(data, ensure_ascii=False),
+    )
 
 
 def get_trip(trip_id: str) -> TripState:
-    trips = _load_trips()
+    data = redis_client.get(_trip_key(trip_id))
 
-    if trip_id not in trips:
+    if data is None:
         raise KeyError(f"Trip not found: {trip_id}")
 
-    return trips[trip_id]
+    trip_data = json.loads(data)
+
+    # Backward compatibility for trips created
+    # before the source field was added.
+    request_data = trip_data.get("request", {})
+
+    if "source" not in request_data:
+        request_data["source"] = "Kolkata"
+
+    return TripState.model_validate(trip_data)
 
 
 def update_trip(trip_id: str, state: TripState) -> None:
-    trips = _load_trips()
-
-    if trip_id not in trips:
+    # Make sure the trip already exists.
+    if redis_client.exists(_trip_key(trip_id)) == 0:
         raise KeyError(f"Trip not found: {trip_id}")
 
-    trips[trip_id] = state
-    _save_trips(trips)
+    save_trip(trip_id, state)
