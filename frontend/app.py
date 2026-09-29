@@ -1,10 +1,11 @@
 import os
-import streamlit as st
+
 import requests
+import streamlit as st
 
 
 # ============================================================
-# PAGE CONFIGURATION
+# CONFIGURATION
 # ============================================================
 
 st.set_page_config(
@@ -12,14 +13,20 @@ st.set_page_config(
     page_icon="✈️",
     layout="wide",
 )
+
 BACKEND_URL = os.getenv(
-    "https://tripmind-backend.vercel.app/",
+    "TRIPMIND_BACKEND_URL",
     "http://127.0.0.1:8000",
-)
+).rstrip("/")
+
 
 # ============================================================
-# HELPER FUNCTIONS
+# HELPERS
 # ============================================================
+
+def api_url(path: str) -> str:
+    return f"{BACKEND_URL}{path}"
+
 
 def get_transport_icon(mode):
     mode = str(mode).lower()
@@ -36,7 +43,7 @@ def get_transport_icon(mode):
     return "🚉"
 
 
-def display_transport_card(option, selected):
+def display_transport_card(option, selected=False):
     mode = option.get("mode", "Transport")
     icon = get_transport_icon(mode)
 
@@ -61,21 +68,18 @@ def display_transport_card(option, selected):
                 {option.get('arrival', '')}
             </p>
             <p>⏱️ {option.get('duration', '')}</p>
-            <h3>
-                💰 ₹{option.get('estimated_cost', 0):,.0f}
-            </h3>
+            <h3>💰 ₹{option.get('estimated_cost', 0):,.0f}</h3>
         </div>
         """,
         unsafe_allow_html=True,
     )
 
 
-def display_accommodation_card(option, selected):
+def display_accommodation_card(option, selected=False):
     border = "#4CAF50" if selected else "#444"
     background = "#102a19" if selected else "#111"
 
     amenities = option.get("amenities", [])
-
     amenities_text = (
         ", ".join(amenities)
         if amenities
@@ -95,29 +99,35 @@ def display_accommodation_card(option, selected):
             min-height: 230px;
         ">
             <h3>🏨 {option.get('name', 'Accommodation')}</h3>
-
-            <p>
-                📍 {option.get('location', 'Location not specified')}
-            </p>
-
-            <p>
-                ⭐ {rating if rating is not None else 'N/A'}
-            </p>
-
-            <p>
-                💰 ₹{option.get('price_per_night', 0):,.0f}/night
-            </p>
-
-            <p>
-                🧾 Total: ₹{option.get('total_cost', 0):,.0f}
-            </p>
-
-            <p>
-                🛎️ {amenities_text}
-            </p>
+            <p>📍 {option.get('location', 'Location not specified')}</p>
+            <p>⭐ {rating if rating is not None else 'N/A'}</p>
+            <p>💰 ₹{option.get('price_per_night', 0):,.0f}/night</p>
+            <p>🧾 Total: ₹{option.get('total_cost', 0):,.0f}</p>
+            <p>🛎️ {amenities_text}</p>
         </div>
         """,
         unsafe_allow_html=True,
+    )
+
+
+def show_api_error(response, action):
+    st.error(
+        f"❌ {action} failed "
+        f"(HTTP {response.status_code})."
+    )
+    try:
+        detail = response.json()
+        st.json(detail)
+    except ValueError:
+        st.code(response.text or "No response body.")
+
+
+def post_json(path, *, json=None, params=None, timeout=60):
+    return requests.post(
+        api_url(path),
+        json=json,
+        params=params,
+        timeout=timeout,
     )
 
 
@@ -126,7 +136,6 @@ def display_accommodation_card(option, selected):
 # ============================================================
 
 st.title("✈️ TripMind")
-
 st.subheader("Multi-Agent AI Travel Planner")
 
 st.write(
@@ -136,17 +145,15 @@ st.write(
 
 
 # ============================================================
-# TRIP INPUT FORM
+# TRIP INPUT
 # ============================================================
 
 st.divider()
-
 st.header("🌍 Plan Your Trip")
 
 col1, col2 = st.columns(2)
 
 with col1:
-
     source = st.text_input(
         "Starting Location",
         placeholder="e.g. Kolkata",
@@ -157,9 +164,7 @@ with col1:
         placeholder="e.g. Goa",
     )
 
-    start_date = st.date_input(
-        "Start Date",
-    )
+    start_date = st.date_input("Start Date")
 
     travelers = st.number_input(
         "Number of Travelers",
@@ -176,44 +181,25 @@ with col1:
         step=5000.0,
     )
 
-
 with col2:
-
-    end_date = st.date_input(
-        "End Date",
-    )
+    end_date = st.date_input("End Date")
 
     accommodation_type = st.selectbox(
         "Accommodation",
-        [
-            "budget",
-            "comfortable",
-            "luxury",
-        ],
+        ["budget", "comfortable", "luxury"],
         index=1,
     )
 
     transport_preference = st.selectbox(
         "Transport Preference",
-        [
-            "any",
-            "flight",
-            "train",
-            "bus",
-            "car",
-        ],
+        ["any", "flight", "train", "bus", "car"],
     )
 
     travel_pace = st.selectbox(
         "Travel Pace",
-        [
-            "relaxed",
-            "balanced",
-            "packed",
-        ],
+        ["relaxed", "balanced", "packed"],
         index=1,
     )
-
 
 st.subheader("🎯 Interests")
 
@@ -232,7 +218,6 @@ interests = st.multiselect(
     ],
     default=["beaches", "food"],
 )
-
 
 st.subheader("🍽️ Food Preferences")
 
@@ -260,21 +245,16 @@ if st.button(
     type="primary",
     use_container_width=True,
 ):
-
     if not source.strip():
-
         st.error("Please enter a starting location.")
 
     elif not destination.strip():
-
         st.error("Please enter a destination.")
 
     elif end_date < start_date:
-
         st.error("End date cannot be before the start date.")
 
     else:
-
         payload = {
             "source": source,
             "destination": destination,
@@ -295,63 +275,68 @@ if st.button(
         with st.spinner(
             "🤖 TripMind agents are planning your trip..."
         ):
-
             try:
-
-                response = requests.post(
-                    f"{BACKEND_URL}/api/trip/plan",
+                response = post_json(
+                    "/api/trip/plan",
                     json=payload,
                     timeout=180,
                 )
 
                 if response.status_code == 200:
-
                     result = response.json()
 
                     st.session_state["trip_id"] = result["trip_id"]
                     st.session_state["trip"] = result["trip"]
 
-                    # Clear previous selections/results
                     st.session_state.pop(
                         "selected_options",
                         None,
                     )
-
                     st.session_state.pop(
                         "final_result",
                         None,
                     )
 
+                    # Reset selection widgets for the new trip.
+                    for key in [
+                        "selected_outbound",
+                        "selected_return",
+                        "selected_accommodation",
+                    ]:
+                        st.session_state.pop(key, None)
+
+                    # Reset checkbox selections.
+                    for key in list(st.session_state.keys()):
+                        if (
+                            key.startswith("activity_")
+                            or key.startswith("attraction_")
+                            or key.startswith("restaurant_")
+                        ):
+                            st.session_state.pop(key, None)
+
                     st.success(
                         "🎉 Trip plan created successfully!"
                     )
-
                     st.rerun()
 
                 else:
-
-                    st.error(
-                        f"Backend error ({response.status_code}): "
-                        f"{response.text}"
+                    show_api_error(
+                        response,
+                        "Trip planning",
                     )
 
             except requests.exceptions.ConnectionError:
-
                 st.error(
                     "❌ Could not connect to the TripMind backend. "
-                    "Make sure FastAPI is running on "
-                    "http://127.0.0.1:8000."
+                    f"Current backend: {BACKEND_URL}"
                 )
 
             except requests.exceptions.Timeout:
-
                 st.error(
-                    "⏱️ The trip planning request timed out. "
-                    "The AI agents may still be processing."
+                    "⏱️ The trip planning request timed out."
                 )
 
             except Exception as exc:
-
                 st.error(
                     f"Unexpected error: {exc}"
                 )
@@ -366,12 +351,10 @@ if "trip" in st.session_state:
     trip = st.session_state["trip"]
 
     st.divider()
-
     st.header("🚆 Transport Options")
 
-
     # ========================================================
-    # OUTBOUND TRANSPORT
+    # OUTBOUND
     # ========================================================
 
     st.subheader("🛫 Outbound Journey")
@@ -382,7 +365,6 @@ if "trip" in st.session_state:
     )
 
     if outbound_options:
-
         outbound_labels = [
             (
                 f"{option.get('mode', 'Transport')} • "
@@ -399,30 +381,19 @@ if "trip" in st.session_state:
             key="selected_outbound",
         )
 
-        outbound_columns = st.columns(
-            len(outbound_options)
-        )
+        outbound_columns = st.columns(len(outbound_options))
 
-        for index, option in enumerate(
-            outbound_options
-        ):
-
+        for index, option in enumerate(outbound_options):
             with outbound_columns[index]:
-
                 display_transport_card(
                     option,
                     index == selected_outbound,
                 )
-
     else:
-
-        st.info(
-            "No outbound transport options available."
-        )
-
+        st.info("No outbound transport options available.")
 
     # ========================================================
-    # RETURN TRANSPORT
+    # RETURN
     # ========================================================
 
     st.subheader("🛬 Return Journey")
@@ -433,7 +404,6 @@ if "trip" in st.session_state:
     )
 
     if return_options:
-
         return_labels = [
             (
                 f"{option.get('mode', 'Transport')} • "
@@ -450,34 +420,22 @@ if "trip" in st.session_state:
             key="selected_return",
         )
 
-        return_columns = st.columns(
-            len(return_options)
-        )
+        return_columns = st.columns(len(return_options))
 
-        for index, option in enumerate(
-            return_options
-        ):
-
+        for index, option in enumerate(return_options):
             with return_columns[index]:
-
                 display_transport_card(
                     option,
                     index == selected_return,
                 )
-
     else:
-
-        st.info(
-            "No return transport options available."
-        )
-
+        st.info("No return transport options available.")
 
     # ========================================================
     # ACCOMMODATION
     # ========================================================
 
     st.divider()
-
     st.header("🏨 Accommodation")
 
     accommodation_options = trip.get(
@@ -486,7 +444,6 @@ if "trip" in st.session_state:
     )
 
     if accommodation_options:
-
         accommodation_labels = [
             (
                 f"{option.get('name', 'Accommodation')} • "
@@ -498,9 +455,7 @@ if "trip" in st.session_state:
         selected_accommodation = st.radio(
             "Choose your accommodation",
             options=range(len(accommodation_options)),
-            format_func=lambda index: (
-                accommodation_labels[index]
-            ),
+            format_func=lambda index: accommodation_labels[index],
             key="selected_accommodation",
         )
 
@@ -511,20 +466,13 @@ if "trip" in st.session_state:
         for index, option in enumerate(
             accommodation_options
         ):
-
             with accommodation_columns[index]:
-
                 display_accommodation_card(
                     option,
                     index == selected_accommodation,
                 )
-
     else:
-
-        st.info(
-            "No accommodation options available."
-        )
-
+        st.info("No accommodation options available.")
 
     # ========================================================
     # ACTIVITIES
@@ -533,6 +481,7 @@ if "trip" in st.session_state:
     st.divider()
 
     st.header("🎯 Activities")
+    st.caption("Choose the activities you want to include in your trip.")
 
     activities = trip.get(
         "recommendations",
@@ -546,66 +495,64 @@ if "trip" in st.session_state:
 
     if activities:
 
-        activity_columns = st.columns(
-            len(activities)
-        )
+        activity_columns = st.columns(3)
 
-        for index, activity in enumerate(
-            activities
-        ):
+        for index, activity in enumerate(activities):
 
             with activity_columns[index]:
 
-                st.markdown(
-                    f"### 🎯 {activity.get('name', 'Activity')}"
-                )
+                with st.container(border=True):
 
-                st.write(
-                    f"📍 {activity.get('location', 'Location not specified')}"
-                )
+                    st.markdown(
+                        f"### 🎯 {activity.get('name', 'Activity')}"
+                    )
 
-                st.write(
-                    f"🏷️ {activity.get('category', 'Activity')}"
-                )
+                    st.write(
+                        f"📍 {activity.get('location', 'Location not specified')}"
+                    )
 
-                st.write(
-                    f"⏱️ {activity.get('duration', 'Duration not specified')}"
-                )
+                    st.write(
+                        f"🏷️ {activity.get('category', 'Activity')}"
+                    )
 
-                st.write(
-                    f"💰 ₹{activity.get('estimated_cost', 0):,.0f}/person"
-                )
+                    st.write(
+                        f"⏱️ {activity.get('duration', 'Duration not specified')}"
+                    )
 
-                st.write(
-                    activity.get(
+                    cost = activity.get("estimated_cost", 0)
+
+                    if cost == 0:
+                        st.write("💰 Free")
+                    else:
+                        st.write(
+                            f"💰 ₹{cost:,.0f}/person"
+                        )
+
+                    description = activity.get(
                         "description",
                         "",
                     )
-                )
 
-                if st.checkbox(
-                    "Select this activity",
-                    key=f"activity_{index}",
-                ):
+                    if description:
+                        st.write(description)
 
-                    selected_activities.append(
-                        activity
-                    )
+                    if st.checkbox(
+                        "Select this activity",
+                        key=f"activity_{index}",
+                    ):
+                        selected_activities.append(activity)
 
     else:
 
-        st.info(
-            "No activities available."
-        )
-
+        st.info("No activities available.")
 
     # ========================================================
     # ATTRACTIONS
     # ========================================================
 
     st.divider()
-
     st.header("🏛️ Attractions")
+    st.caption("Choose the attractions you want to include in your trip.")
 
     attractions = trip.get(
         "recommendations",
@@ -618,63 +565,55 @@ if "trip" in st.session_state:
     selected_attractions = []
 
     if attractions:
+        attraction_columns = st.columns(len(attractions))
 
-        attraction_columns = st.columns(
-            len(attractions)
-        )
-
-        for index, attraction in enumerate(
-            attractions
-        ):
-
+        for index, attraction in enumerate(attractions):
             with attraction_columns[index]:
+                with st.container(border=True):
+                    st.markdown(
+                        f"### 🏛️ {attraction.get('name', 'Attraction')}"
+                    )
 
-                st.markdown(
-                    f"### 🏛️ {attraction.get('name', 'Attraction')}"
-                )
+                    st.write(
+                        f"📍 {attraction.get('location', 'Location not specified')}"
+                    )
 
-                st.write(
-                    f"📍 {attraction.get('location', 'Location not specified')}"
-                )
+                    st.write(
+                        f"🏷️ {attraction.get('category', 'Attraction')}"
+                    )
 
-                st.write(
-                    f"🏷️ {attraction.get('category', 'Attraction')}"
-                )
+                    st.write(
+                        f"⏱️ {attraction.get('duration', 'Duration not specified')}"
+                    )
 
-                st.write(
-                    f"⏱️ {attraction.get('duration', 'Duration not specified')}"
-                )
+                    cost = attraction.get("estimated_cost",0)
 
-                st.write(
-                    f"💰 ₹{attraction.get('estimated_cost', 0):,.0f}/person"
-                )
+                    if cost == 0:
+                        st.write("💰 Free")
+                    else:
+                        st.write(
+                            f"💰 ₹{cost:,.0f}/person"
+                        )
 
-                st.write(
-                    f"🕐 {attraction.get('opening_hours', 'Hours not specified')}"
-                )
+                    st.write(
+                        f"🕐 {attraction.get('opening_hours', 'Hours not specified')}"
+                    )
 
-                st.write(
-                    attraction.get(
+                    description= attraction.get(
                         "description",
                         "",
                     )
-                )
+
+                    if description:
+                        st.write(description)
 
                 if st.checkbox(
                     "Select this attraction",
                     key=f"attraction_{index}",
                 ):
-
-                    selected_attractions.append(
-                        attraction
-                    )
-
+                    selected_attractions.append(attraction)
     else:
-
-        st.info(
-            "No attractions available."
-        )
-
+        st.info("No attractions available.")
 
     # ========================================================
     # RESTAURANTS
@@ -683,11 +622,9 @@ if "trip" in st.session_state:
     st.divider()
 
     st.header("🍽️ Restaurants")
+    st.caption("Choose the restaurants you want to include in your trip.")
 
     restaurants = trip.get(
-        "recommendations",
-        {},
-    ).get(
         "restaurants",
         [],
     )
@@ -695,66 +632,60 @@ if "trip" in st.session_state:
     selected_restaurants = []
 
     if restaurants:
+        restaurant_columns = st.columns(len(restaurants))
 
-        restaurant_columns = st.columns(
-            len(restaurants)
-        )
-
-        for index, restaurant in enumerate(
-            restaurants
-        ):
+        for index, restaurant in enumerate(restaurants):
 
             with restaurant_columns[index]:
 
-                st.markdown(
-                    f"### 🍽️ {restaurant.get('name', 'Restaurant')}"
-                )
+                with st.container(border=True):
+                    st.markdown(
+                        f"### 🍽️ {restaurant.get('name', 'Restaurant')}"
+                    )
 
-                st.write(
-                    f"📍 {restaurant.get('location', 'Location not specified')}"
-                )
+                    st.write(
+                        f"📍 {restaurant.get('location', 'Location not specified')}"
+                    )
 
-                st.write(
-                    f"🍴 {restaurant.get('cuisine', 'Cuisine not specified')}"
-                )
+                    st.write(
+                        f"🍴 {restaurant.get('cuisine', 'Cuisine not specified')}"
+                    )
 
-                st.write(
-                    f"💵 {restaurant.get('price_range', 'Price range not specified')}"
-                )
+                    st.write(
+                        f"💵 {restaurant.get('price_range', 'Price range not specified')}"
+                    )
 
-                st.write(
-                    f"💰 ₹{restaurant.get('estimated_cost', 0):,.0f}/person"
-                )
+                    cost = restaurant.get(
+                        "estimated_cost",
+                        0,
+                    )
+
+                    if cost == 0:
+                        st.write("💰 Free")
+                    else:
+                        st.write(
+                            f"💰 ₹{cost:,.0f}/person"
+                        )
 
                 if st.checkbox(
                     "Select this restaurant",
                     key=f"restaurant_{index}",
                 ):
-
-                    selected_restaurants.append(
-                        restaurant
-                    )
-
+                    selected_restaurants.append(restaurant)
 
     else:
-
-        st.info(
-            "No restaurants available."
-        )
-
+        st.info("No restaurants available.")
 
     # ========================================================
     # REVIEW
     # ========================================================
 
     st.divider()
-
     st.header("🧳 Review Your Trip")
 
     st.subheader("🚆 Transport")
 
     if outbound_options:
-
         outbound_choice = outbound_options[
             st.session_state.get(
                 "selected_outbound",
@@ -770,7 +701,6 @@ if "trip" in st.session_state:
         )
 
     if return_options:
-
         return_choice = return_options[
             st.session_state.get(
                 "selected_return",
@@ -785,11 +715,9 @@ if "trip" in st.session_state:
             f"₹{return_choice.get('estimated_cost', 0):,.0f}"
         )
 
-
     st.subheader("🏨 Accommodation")
 
     if accommodation_options:
-
         accommodation_choice = accommodation_options[
             st.session_state.get(
                 "selected_accommodation",
@@ -807,86 +735,63 @@ if "trip" in st.session_state:
             f"₹{accommodation_choice.get('total_cost', 0):,.0f}"
         )
 
-
     st.subheader("🎯 Activities")
 
     if selected_activities:
-
         for activity in selected_activities:
-
             st.write(
                 f"• {activity.get('name')} — "
                 f"₹{activity.get('estimated_cost', 0):,.0f}/person"
             )
-
     else:
-
-        st.caption(
-            "No activities selected."
-        )
-
+        st.caption("No activities selected.")
 
     st.subheader("🏛️ Attractions")
 
     if selected_attractions:
-
         for attraction in selected_attractions:
-
             st.write(
                 f"• {attraction.get('name')} — "
                 f"₹{attraction.get('estimated_cost', 0):,.0f}/person"
             )
-
     else:
-
-        st.caption(
-            "No attractions selected."
-        )
-
+        st.caption("No attractions selected.")
 
     st.subheader("🍽️ Restaurants")
 
     if selected_restaurants:
-
         for restaurant in selected_restaurants:
-
             st.write(
                 f"• {restaurant.get('name')} — "
                 f"₹{restaurant.get('estimated_cost', 0):,.0f}/person"
             )
-
     else:
-
-        st.caption(
-            "No restaurants selected."
-        )
-
+        st.caption("No restaurants selected.")
 
     # ========================================================
     # CONFIRM SELECTIONS
     # ========================================================
 
     st.divider()
+    st.header("✅ Confirm Your Selections")
+
+    st.caption(
+        "Review your choices above, then save them before "
+        "generating your final trip plan."
+    )
 
     if st.button(
         "✅ Confirm My Selections",
         type="primary",
         use_container_width=True,
     ):
-
         selection_payload = {
             "trip_id": st.session_state["trip_id"],
             "outbound_transport": outbound_options[
-                st.session_state.get(
-                    "selected_outbound",
-                    0,
-                )
+                st.session_state.get("selected_outbound", 0)
             ],
             "return_transport": return_options[
-                st.session_state.get(
-                    "selected_return",
-                    0,
-                )
+                st.session_state.get("selected_return", 0)
             ],
             "accommodation": accommodation_options[
                 st.session_state.get(
@@ -899,57 +804,49 @@ if "trip" in st.session_state:
             "restaurants": selected_restaurants,
         }
 
-        with st.spinner(
-            "💾 Saving your selections..."
-        ):
-
+        with st.spinner("💾 Saving your selections..."):
             try:
-
-                response = requests.post(
-                    f"{BACKEND_URL}/api/trip/select",
+                response = post_json(
+                    "/api/trip/select",
                     json=selection_payload,
                     timeout=60,
                 )
 
                 if response.status_code == 200:
-
                     result = response.json()
 
                     st.session_state[
                         "selected_options"
-                    ] = result[
-                        "selected_options"
-                    ]
+                    ] = result["selected_options"]
+
+                    st.session_state.pop(
+                        "final_result",
+                        None,
+                    )
 
                     st.success(
                         "🎉 Your trip selections have been saved!"
                     )
-
                     st.rerun()
 
                 else:
-
-                    st.error(
-                        f"Backend error ({response.status_code}): "
-                        f"{response.text}"
+                    show_api_error(
+                        response,
+                        "Saving selections",
                     )
 
             except requests.exceptions.ConnectionError:
-
                 st.error(
                     "❌ Could not connect to the TripMind backend. "
-                    "Make sure FastAPI is running on "
-                    "http://127.0.0.1:8000."
+                    f"Current backend: {BACKEND_URL}"
                 )
 
             except requests.exceptions.Timeout:
-
                 st.error(
                     "⏱️ Selection request timed out."
                 )
 
             except Exception as exc:
-
                 st.error(
                     f"Unexpected error: {exc}"
                 )
@@ -962,7 +859,6 @@ if "trip" in st.session_state:
 if "selected_options" in st.session_state:
 
     st.divider()
-
     st.header("✨ Finalize Your Trip")
 
     st.write(
@@ -975,15 +871,12 @@ if "selected_options" in st.session_state:
         type="primary",
         use_container_width=True,
     ):
-
         with st.spinner(
             "🤖 Generating packing list, itinerary, and budget..."
         ):
-
             try:
-
-                response = requests.post(
-                    f"{BACKEND_URL}/api/trip/finalize",
+                response = post_json(
+                    "/api/trip/finalize",
                     params={
                         "trip_id": st.session_state["trip_id"],
                     },
@@ -991,9 +884,12 @@ if "selected_options" in st.session_state:
                 )
 
                 if response.status_code == 200:
-
                     result = response.json()
 
+                    # IMPORTANT:
+                    # Do not call st.rerun() here.
+                    # The final result is rendered below in this
+                    # same Streamlit execution.
                     st.session_state[
                         "final_result"
                     ] = result
@@ -1002,31 +898,24 @@ if "selected_options" in st.session_state:
                         "🎉 Your final trip plan is ready!"
                     )
 
-                    st.rerun()
-
                 else:
-
-                    st.error(
-                        f"Backend error ({response.status_code}): "
-                        f"{response.text}"
+                    show_api_error(
+                        response,
+                        "Final trip generation",
                     )
 
             except requests.exceptions.ConnectionError:
-
                 st.error(
                     "❌ Could not connect to the TripMind backend. "
-                    "Make sure FastAPI is running on "
-                    "http://127.0.0.1:8000."
+                    f"Current backend: {BACKEND_URL}"
                 )
 
             except requests.exceptions.Timeout:
-
                 st.error(
                     "⏱️ Final trip generation timed out."
                 )
 
             except Exception as exc:
-
                 st.error(
                     f"Unexpected error: {exc}"
                 )
@@ -1035,16 +924,13 @@ if "selected_options" in st.session_state:
 # ============================================================
 # FINAL TRIP RESULTS
 # ============================================================
-if "final_result" in st.session_state:
-    st.stop()
 
-final_result = st.session_state.get("final_result")  
-if final_result:
+if "final_result" in st.session_state:
+
+    final_result = st.session_state["final_result"]
 
     st.divider()
-
     st.header("🎉 Your Final Trip Plan")
-
 
     # ========================================================
     # PACKING LIST
@@ -1058,99 +944,102 @@ if final_result:
     )
 
     if packing_list:
-
         packing_columns = st.columns(2)
 
-        for index, item in enumerate(
-            packing_list
-        ):
-
+        for index, item in enumerate(packing_list):
             with packing_columns[index % 2]:
-
                 st.checkbox(
                     item,
-                    key=f"packing_{index}",
+                    key=f"packing_final_{index}",
                 )
-
     else:
-
-        st.info(
-            "No packing items were generated."
-        )
-
+        st.info("No packing items were generated.")
 
     # ========================================================
     # ITINERARY
     # ========================================================
 
-
     st.subheader("🗓️ Itinerary")
 
-    itinerary = final_result.get("final_itinerary")
+    itinerary = final_result.get(
+        "final_itinerary"
+    )
 
     if itinerary:
-
         days = itinerary.get("days", [])
 
-        for day in days:
-
-            st.markdown(
-            f"### 📅 {day.get('date', 'Date')}"
-            )
-
-            weather = day.get("weather", {})
-
-            if weather:
+        if days:
+            for day in days:
                 st.markdown(
-                    f"🌤️ **Weather:** "
-                    f"{weather.get('temperature_c', 'N/A')}°C — "
-                    f"{weather.get('condition', 'N/A')} "
-                    f"(Rain probability: "
-                    f"{weather.get('rain_probability', 'N/A')}%)"
+                    f"### 📅 {day.get('date', 'Date')}"
                 )
 
-            st.markdown("---")
+                weather = day.get("weather", {})
 
-            morning = day.get("morning", {})
+                if weather:
+                    st.markdown(
+                        f"🌤️ **Weather:** "
+                        f"{weather.get('temperature_c', 'N/A')}°C — "
+                        f"{weather.get('condition', 'N/A')} "
+                        f"(Rain probability: "
+                        f"{weather.get('rain_probability', 'N/A')}%)"
+                    )
 
-            if morning.get("name") != "No additional activity selected":
-                st.markdown(
-                    f"🌅 **Morning — {morning.get('name', '')}**  \n"
-                    f"📍 {morning.get('location', '')}  \n"
-                    f"⏱️ {morning.get('duration', '')}"
-                )
-            else:
-                st.markdown("🌅 **Morning:** Free time")
+                st.markdown("---")
 
-            afternoon = day.get("afternoon", {})
+                morning = day.get("morning", {})
 
-            if afternoon.get("name") != "No additional attraction selected":
-                st.markdown(
-                    f"🏛️ **Afternoon — {afternoon.get('name', '')}**  \n"
-                    f"📍 {afternoon.get('location', '')}  \n"
-                    f"⏱️ {afternoon.get('duration', '')}"
-                )
-            else:
-                st.markdown("🏛️ **Afternoon:** Free time")
+                if morning.get("name") != (
+                    "No additional activity selected"
+                ):
+                    st.markdown(
+                        f"🌅 **Morning — "
+                        f"{morning.get('name', '')}**  \n"
+                        f"📍 {morning.get('location', '')}  \n"
+                        f"⏱️ {morning.get('duration', '')}"
+                    )
+                else:
+                    st.markdown(
+                        "🌅 **Morning:** Free time"
+                    )
 
-            evening = day.get("evening", {})
+                afternoon = day.get("afternoon", {})
 
-            if evening.get("name") != "No restaurant selected":
-                st.markdown(
-                    f"🍽️ **Evening — {evening.get('name', '')}**  \n"
-                    f"📍 {evening.get('location', '')}  \n"
-                    f"🍴 {evening.get('cuisine', '')}"
-                )
-            else:
-                st.markdown("🍽️ **Evening:** Free time")
+                if afternoon.get("name") != (
+                    "No additional attraction selected"
+                ):
+                    st.markdown(
+                        f"🏛️ **Afternoon — "
+                        f"{afternoon.get('name', '')}**  \n"
+                        f"📍 {afternoon.get('location', '')}  \n"
+                        f"⏱️ {afternoon.get('duration', '')}"
+                    )
+                else:
+                    st.markdown(
+                        "🏛️ **Afternoon:** Free time"
+                    )
 
-            st.divider()
+                evening = day.get("evening", {})
 
+                if evening.get("name") != (
+                    "No restaurant selected"
+                ):
+                    st.markdown(
+                        f"🍽️ **Evening — "
+                        f"{evening.get('name', '')}**  \n"
+                        f"📍 {evening.get('location', '')}  \n"
+                        f"🍴 {evening.get('cuisine', '')}"
+                    )
+                else:
+                    st.markdown(
+                        "🍽️ **Evening:** Free time"
+                    )
+
+                st.divider()
+        else:
+            st.info("No itinerary days were generated.")
     else:
-
         st.info("No itinerary was generated.")
-
-
 
     # ========================================================
     # BUDGET
@@ -1163,7 +1052,6 @@ if final_result:
     )
 
     if budget_summary:
-
         currency = budget_summary.get(
             "currency",
             "INR",
@@ -1192,76 +1080,57 @@ if final_result:
         col1, col2, col3 = st.columns(3)
 
         with col1:
-
             st.metric(
                 "Total Budget",
                 f"{currency} {budget:,.0f}",
             )
 
         with col2:
-
             st.metric(
                 "Estimated Cost",
                 f"{currency} {estimated_total:,.0f}",
             )
 
         with col3:
-
             st.metric(
                 "Remaining",
                 f"{currency} {remaining_budget:,.0f}",
             )
 
-
         st.write("### Cost Breakdown")
 
         st.write(
-            f"🚆 Transport: "
-            f"{currency} "
+            f"🚆 Transport: {currency} "
             f"{breakdown.get('transport', 0):,.0f}"
         )
 
         st.write(
-            f"🏨 Accommodation: "
-            f"{currency} "
+            f"🏨 Accommodation: {currency} "
             f"{breakdown.get('accommodation', 0):,.0f}"
         )
 
         st.write(
-            f"🎯 Activities: "
-            f"{currency} "
+            f"🎯 Activities: {currency} "
             f"{breakdown.get('activities', 0):,.0f}"
         )
 
         st.write(
-            f"🏛️ Attractions: "
-            f"{currency} "
+            f"🏛️ Attractions: {currency} "
             f"{breakdown.get('attractions', 0):,.0f}"
         )
 
         st.write(
-            f"🍽️ Restaurants: "
-            f"{currency} "
+            f"🍽️ Restaurants: {currency} "
             f"{breakdown.get('restaurants', 0):,.0f}"
         )
 
-
-        if budget_summary.get(
-            "within_budget"
-        ):
-
+        if budget_summary.get("within_budget"):
             st.success(
                 "✅ Your estimated trip cost is within budget."
             )
-
         else:
-
             st.warning(
                 "⚠️ Your estimated trip cost exceeds the selected budget."
             )
-
     else:
-
-        st.info(
-            "No budget summary was generated."
-        )
+        st.info("No budget summary was generated.")

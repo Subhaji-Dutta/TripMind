@@ -1,14 +1,6 @@
-from typing import Callable, Optional, Any
+from typing import Callable, Optional
 
-from backend.models.trip import (
-    TripRequest,
-    TripState,
-    WeatherInfo,
-    TransportOption,
-    AccommodationOption,
-    Restaurant,
-    RecommendationResult,
-)
+from backend.models.trip import TripRequest, TripState
 
 
 class OrchestrationAgent:
@@ -18,10 +10,11 @@ class OrchestrationAgent:
     This component does NOT use an LLM.
 
     Its responsibility is to:
+
     1. Receive the user's trip request.
     2. Call the required data-provider agents.
     3. Collect their results.
-    4. Pass the collected information to the
+    4. Pass the relevant information to the
        Recommendation Agent.
     """
 
@@ -47,7 +40,6 @@ class OrchestrationAgent:
         """
         Create the initial TripState from the user's request.
         """
-
         return TripState(
             request=request
         )
@@ -61,15 +53,12 @@ class OrchestrationAgent:
         state: TripState,
     ) -> TripState:
         """
-        Call the data-provider agents and store their
-        results in TripState.
-
-        The agents are optional for now because they will
-        be implemented one at a time.
+        Call the independent data-provider agents and store
+        their results in TripState.
         """
 
         # ----------------------------------------------------
-        # Weather
+        # Weather Agent
         # ----------------------------------------------------
 
         if self.weather_agent is not None:
@@ -78,20 +67,19 @@ class OrchestrationAgent:
             )
 
         # ----------------------------------------------------
-        # Transport
+        # Transport Agent
         # ----------------------------------------------------
 
         if self.transport_agent is not None:
             (
                 state.outbound_transport_options,
                 state.return_transport_options,
-
-            )= self.transport_agent(
+            ) = self.transport_agent(
                 state.request
             )
 
         # ----------------------------------------------------
-        # Accommodation
+        # Accommodation Agent
         # ----------------------------------------------------
 
         if self.accommodation_agent is not None:
@@ -102,7 +90,7 @@ class OrchestrationAgent:
             )
 
         # ----------------------------------------------------
-        # Restaurants
+        # Restaurant Agent
         # ----------------------------------------------------
 
         if self.restaurant_agent is not None:
@@ -121,8 +109,15 @@ class OrchestrationAgent:
         state: TripState,
     ) -> TripState:
         """
-        Send the user's request and all collected information
-        to the Recommendation Agent.
+        Send only the information required by the
+        Recommendation Agent.
+
+        The Recommendation Agent generates:
+        - Activities
+        - Attractions
+
+        Restaurants are handled independently by the
+        Restaurant Agent and remain in TripState.
         """
 
         if self.recommendation_agent is None:
@@ -136,7 +131,6 @@ class OrchestrationAgent:
                 + state.return_transport_options
             ),
             state.accommodation_options,
-            state.restaurants,
         )
 
         state.recommendations = recommendations
@@ -152,7 +146,7 @@ class OrchestrationAgent:
         request: TripRequest,
     ) -> TripState:
         """
-        Run the orchestration workflow.
+        Run the complete orchestration workflow.
         """
 
         print("\n" + "=" * 60)
@@ -174,17 +168,18 @@ class OrchestrationAgent:
 
         print(
             f"Budget      : "
-            f"{request.currency} {request.budget:,.2f}"
+            f"{request.currency} "
+            f"{request.budget:,.2f}"
         )
 
         # ----------------------------------------------------
-        # Step 1: Create state
+        # Step 1: Create initial state
         # ----------------------------------------------------
 
         state = self.create_state(request)
 
         # ----------------------------------------------------
-        # Step 2: Collect external information
+        # Step 2: Collect information from independent agents
         # ----------------------------------------------------
 
         print("\nCollecting trip information...")
@@ -192,11 +187,11 @@ class OrchestrationAgent:
         state = self.collect_trip_data(state)
 
         # ----------------------------------------------------
-        # Step 3: Create recommendations
+        # Step 3: Generate activity and attraction candidates
         # ----------------------------------------------------
 
         print(
-            "\nSending collected information "
+            "\nSending trip information "
             "to Recommendation Agent..."
         )
 

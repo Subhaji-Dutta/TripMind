@@ -10,7 +10,6 @@ from backend.models.trip import (
     WeatherInfo,
     TransportOption,
     AccommodationOption,
-    Restaurant,
     RecommendationResult,
     Activity,
     Attraction,
@@ -37,21 +36,29 @@ class RecommendationAgent:
         weather: WeatherInfo,
         transport_options: List[TransportOption],
         accommodation_options: List[AccommodationOption],
-        restaurants: List[Restaurant],
     ) -> RecommendationResult:
 
         print("  [REAL GROQ] Recommendation Agent called")
 
-        restaurant_names = [
-            restaurant.name
-            for restaurant in restaurants
-        ]
-
         prompt = f"""
 You are the Recommendation Agent for TripMind.
 
-Recommend activities, attractions, and restaurants
-for this trip.
+Your responsibility is ONLY to generate candidate
+activities and attractions for the trip.
+
+Restaurant recommendations are handled separately by
+the Restaurant Agent.
+
+DO NOT generate restaurants.
+DO NOT include restaurants in your response.
+
+The next stage is a deterministic Python Planning Engine.
+The Planning Engine will compare your activities and
+attractions against the trip budget, duration, weather,
+transport, accommodation, and restaurant options.
+
+Therefore, provide a useful candidate pool rather than
+trying to create the final trip plan.
 
 TRIP:
 {request.model_dump_json(indent=2)}
@@ -70,23 +77,6 @@ ACCOMMODATION OPTIONS:
     [option.model_dump() for option in accommodation_options],
     indent=2,
 )}
-
-AVAILABLE RESTAURANTS:
-{json.dumps(
-    [restaurant.model_dump() for restaurant in restaurants],
-    indent=2,
-)}
-
-IMPORTANT RESTAURANT RULE:
-
-You MUST select restaurants ONLY from the
-AVAILABLE RESTAURANTS list.
-
-Available restaurant names are:
-
-{json.dumps(restaurant_names, indent=2)}
-
-DO NOT create, invent, rename, or modify restaurant names.
 
 Return ONLY valid JSON in exactly this structure:
 
@@ -112,31 +102,25 @@ Return ONLY valid JSON in exactly this structure:
       "available_days": [],
       "opening_hours": "string"
     }}
-  ],
-  "restaurants": [
-    {{
-      "name": "EXACT NAME FROM AVAILABLE RESTAURANTS",
-      "location": "string",
-      "cuisine": "string",
-      "price_range": "string",
-      "estimated_cost": 0
-    }}
   ]
 }}
 
 Rules:
-- Return exactly 2 activities.
-- Return exactly 2 attractions.
-- Return exactly 2 restaurants.
-- Restaurant names MUST exactly match names
-  from AVAILABLE RESTAURANTS.
-- Do not invent restaurant names.
-- Do not create new restaurants.
+
+- Return exactly 3 activities.
+- Return exactly 3 attractions.
+- Do NOT return restaurants.
+- Do NOT create a restaurants field.
 - Use the actual destination.
 - Consider the weather.
 - Consider the user's interests.
-- Consider the food preferences.
-- Keep estimated costs numeric.
+- Consider the user's travel pace.
+- Include a variety of categories.
+- Include a mixture of low-cost and higher-cost options
+  where appropriate.
+- Keep estimated_cost numeric.
+- Do not use negative costs.
+- Keep descriptions concise.
 - Return JSON only.
 - No markdown.
 - No explanations.
@@ -150,6 +134,11 @@ Rules:
                     "content": (
                         "You are a precise travel "
                         "recommendation engine. "
+                        "Your responsibility is to "
+                        "generate activity and attraction "
+                        "candidates only. "
+                        "Restaurants are handled by a "
+                        "separate agent. "
                         "Return only valid JSON."
                     ),
                 },
@@ -159,7 +148,7 @@ Rules:
                 },
             ],
             temperature=0.2,
-            max_tokens=2500,
+            max_tokens=3500,
         )
 
         if not response.choices:
@@ -189,7 +178,6 @@ Rules:
 
         activities_data = data.get("activities", [])
         attractions_data = data.get("attractions", [])
-        restaurants_data = data.get("restaurants", [])
 
         if not isinstance(activities_data, list):
             raise ValueError(
@@ -203,68 +191,63 @@ Rules:
                 "'attractions' list."
             )
 
-        if not isinstance(restaurants_data, list):
+        if "restaurants" in data:
             raise ValueError(
-                "Recommendation Agent returned an invalid "
-                "'restaurants' list."
+                "Recommendation Agent must not return restaurants. "
+                "Restaurants are handled by Restaurant Agent."
             )
 
-        if len(activities_data) != 2:
-            raise ValueError(
-                "Recommendation Agent must return exactly "
-                f"2 activities. Received: {len(activities_data)}"
-            )
-
-        if len(attractions_data) != 2:
+        if len(activities_data) != 3:
             raise ValueError(
                 "Recommendation Agent must return exactly "
-                f"2 attractions. Received: {len(attractions_data)}"
+                f"3 activities. Received: {len(activities_data)}"
             )
 
-        if len(restaurants_data) != 2:
+        if len(attractions_data) != 3:
             raise ValueError(
                 "Recommendation Agent must return exactly "
-                f"2 restaurants. Received: {len(restaurants_data)}"
+                f"3 attractions. Received: {len(attractions_data)}"
             )
 
-        available_restaurants = {
-            restaurant.name: restaurant
-            for restaurant in restaurants
-        }
+        activities = []
 
-        recommended_restaurants = []
+        for activity in activities_data:
+            cost = activity.get("estimated_cost", 0)
 
-        for item in restaurants_data:
-            name = item.get("name")
-
-            if name not in available_restaurants:
+            if not isinstance(cost, (int, float)):
                 raise ValueError(
-                    "Recommendation Agent invented or modified "
-                    f"a restaurant name: '{name}'. "
-                    "Restaurant names must come from the "
-                    "Restaurant Agent."
+                    "Activity estimated_cost must be numeric."
                 )
 
-            source_restaurant = available_restaurants[name]
-
-            recommended_restaurants.append(
-                Restaurant(
-                    name=source_restaurant.name,
-                    location=source_restaurant.location,
-                    cuisine=source_restaurant.cuisine,
-                    price_range=source_restaurant.price_range,
-                    estimated_cost=source_restaurant.estimated_cost,
+            if cost < 0:
+                raise ValueError(
+                    "Activity estimated_cost cannot be negative."
                 )
+
+            activities.append(
+                Activity(**activity)
+            )
+
+        attractions = []
+
+        for attraction in attractions_data:
+            cost = attraction.get("estimated_cost", 0)
+
+            if not isinstance(cost, (int, float)):
+                raise ValueError(
+                    "Attraction estimated_cost must be numeric."
+                )
+
+            if cost < 0:
+                raise ValueError(
+                    "Attraction estimated_cost cannot be negative."
+                )
+
+            attractions.append(
+                Attraction(**attraction)
             )
 
         return RecommendationResult(
-            activities=[
-                Activity(**activity)
-                for activity in activities_data
-            ],
-            attractions=[
-                Attraction(**attraction)
-                for attraction in attractions_data
-            ],
-            restaurants=recommended_restaurants,
+            activities=activities,
+            attractions=attractions,
         )

@@ -1,5 +1,4 @@
 from backend.agents.recommendation_agent import RecommendationAgent
-from backend.agents.restaurant_agent import RestaurantAgent
 
 from backend.models.trip import (
     TripRequest,
@@ -14,6 +13,7 @@ def main():
     print("=" * 60)
 
     request = TripRequest(
+        source="Kolkata",
         destination="Goa",
         start_date="2026-09-27",
         end_date="2026-09-30",
@@ -98,25 +98,8 @@ def main():
         ),
     ]
 
-    print("\nGetting restaurants from Restaurant Agent...")
-    restaurant_agent = RestaurantAgent()
-    restaurants = restaurant_agent.run(request)
-
-    print("\nRestaurant Agent provided:")
-    for restaurant in restaurants:
-        print(
-            f"  {restaurant.name} | "
-            f"{restaurant.cuisine} | "
-            f"{restaurant.price_range} | "
-            f"₹{restaurant.estimated_cost:,.0f}"
-        )
-
-    available_restaurant_names = {
-        restaurant.name
-        for restaurant in restaurants
-    }
-
     print("\nRunning Recommendation Agent...")
+
     recommendation_agent = RecommendationAgent()
 
     result = recommendation_agent.run(
@@ -124,7 +107,6 @@ def main():
         weather=weather,
         transport_options=transport_options,
         accommodation_options=accommodation_options,
-        restaurants=restaurants,
     )
 
     print("\n" + "=" * 60)
@@ -132,7 +114,7 @@ def main():
     print("=" * 60)
 
     print(
-        f"Recommended activities: "
+        f"\nRecommended activities: "
         f"{len(result.activities)}"
     )
 
@@ -157,31 +139,15 @@ def main():
             f"₹{attraction.estimated_cost:,.0f}"
         )
 
-    print(
-        f"\nRecommended restaurants: "
-        f"{len(result.restaurants)}"
-    )
-
-    for restaurant in result.restaurants:
-        print(
-            f"  {restaurant.name} | "
-            f"{restaurant.cuisine} | "
-            f"{restaurant.price_range} | "
-            f"₹{restaurant.estimated_cost:,.0f}"
-        )
-
     print("\n" + "=" * 60)
     print("RECOMMENDATION VALIDATION")
     print("=" * 60)
 
-    assert len(result.activities) == 2
-    print("  ✓ Exactly 2 activities returned")
+    assert len(result.activities) == 3
+    print("  ✓ Exactly 3 activities returned")
 
-    assert len(result.attractions) == 2
-    print("  ✓ Exactly 2 attractions returned")
-
-    assert len(result.restaurants) == 2
-    print("  ✓ Exactly 2 restaurants returned")
+    assert len(result.attractions) == 3
+    print("  ✓ Exactly 3 attractions returned")
 
     assert all(
         activity.name
@@ -196,33 +162,34 @@ def main():
     print("  ✓ Attraction names present")
 
     assert all(
-        restaurant.name
-        for restaurant in result.restaurants
+        isinstance(activity.estimated_cost, (int, float))
+        for activity in result.activities
     )
-    print("  ✓ Restaurant names present")
+    print("  ✓ Activity costs are numeric")
 
-    recommended_restaurant_names = {
-        restaurant.name
-        for restaurant in result.restaurants
-    }
-
-    assert recommended_restaurant_names.issubset(
-        available_restaurant_names
+    assert all(
+        isinstance(attraction.estimated_cost, (int, float))
+        for attraction in result.attractions
     )
-    print(
-        "  ✓ Recommended restaurants come only "
-        "from Restaurant Agent results"
-    )
+    print("  ✓ Attraction costs are numeric")
 
-    print(
-        "\nRestaurant contract verified:"
+    assert all(
+        activity.estimated_cost >= 0
+        for activity in result.activities
     )
+    print("  ✓ Activity costs are non-negative")
 
-    for restaurant in result.restaurants:
-        print(
-            f"  ✓ {restaurant.name} "
-            f"was provided by Restaurant Agent"
-        )
+    assert all(
+        attraction.estimated_cost >= 0
+        for attraction in result.attractions
+    )
+    print("  ✓ Attraction costs are non-negative")
+
+    print("\nRecommendation Agent responsibility verified:")
+    print("  ✓ Generates activities")
+    print("  ✓ Generates attractions")
+    print("  ✓ Does not handle restaurants")
+    print("  ✓ Restaurant Agent remains independent")
 
     print("\n✅ Recommendation Agent test passed.")
 

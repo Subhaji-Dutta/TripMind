@@ -4,6 +4,7 @@ from backend.models.trip import TripRequest, TripPreferences
 def main():
 
     request = TripRequest(
+        source="Kolkata",
         destination="Goa",
         start_date="2026-11-10",
         end_date="2026-11-14",

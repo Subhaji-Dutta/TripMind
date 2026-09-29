@@ -2,7 +2,6 @@ from backend.agents.orchestrator import OrchestrationAgent
 
 from backend.models.trip import (
     TripRequest,
-    TripPreferences,
     WeatherInfo,
     TransportOption,
     AccommodationOption,
@@ -13,228 +12,200 @@ from backend.models.trip import (
 )
 
 
-# ============================================================
-# MOCK WEATHER
-# ============================================================
-
-def mock_weather_agent(request):
-
-    print("  [MOCK] Weather Agent called")
-
+def fake_weather_agent(request):
     return WeatherInfo(
         destination=request.destination,
         forecast=[
             {
                 "date": request.start_date,
-                "temperature_c": 30,
+                "temperature_c": 26,
                 "condition": "Sunny",
-                "rain_probability": 20,
+                "rain_probability": 10,
             }
         ],
     )
 
 
-# ============================================================
-# MOCK TRANSPORT
-# ============================================================
-
-def mock_transport_agent(request):
-
-    print("  [MOCK] Transport Agent called")
-
-    return [
-        TransportOption(
-            mode="Flight",
-            provider="Demo Airways",
-            departure="08:00",
-            arrival="10:30",
-            duration="2h 30m",
-            estimated_cost=8500,
-        ),
+def fake_transport_agent(request):
+    outbound = [
         TransportOption(
             mode="Train",
-            provider="Demo Railways",
-            departure="18:00",
-            arrival="06:00",
-            duration="12h",
-            estimated_cost=2200,
-        ),
+            provider="Test Railways",
+            departure=request.source,
+            arrival=request.destination,
+            duration="30 hours",
+            estimated_cost=2500,
+        )
     ]
 
+    return_transport = [
+        TransportOption(
+            mode="Train",
+            provider="Test Railways",
+            departure=request.destination,
+            arrival=request.source,
+            duration="30 hours",
+            estimated_cost=2500,
+        )
+    ]
 
-# ============================================================
-# MOCK ACCOMMODATION
-# ============================================================
+    return outbound, return_transport
 
-def mock_accommodation_agent(request):
 
-    print("  [MOCK] Accommodation Agent called")
-
+def fake_accommodation_agent(request):
     return [
         AccommodationOption(
-            name="Demo Beach Resort",
+            name="Test Beach Hotel",
             location=request.destination,
-            rating=4.3,
-            price_per_night=3500,
-            total_cost=14000,
-            amenities=[
-                "Wi-Fi",
-                "Pool",
-                "Breakfast",
-            ],
+            rating=4.2,
+            price_per_night=3000,
+            total_cost=9000,
+            amenities=["Wi-Fi"],
         )
     ]
 
 
-# ============================================================
-# MOCK RESTAURANT
-# ============================================================
-
-def mock_restaurant_agent(request):
-
-    print("  [MOCK] Restaurant Agent called")
-
+def fake_restaurant_agent(request):
     return [
         Restaurant(
-            name="Demo Coastal Kitchen",
-            location=request.destination,
-            cuisine="Indian Seafood",
-            price_range="₹₹",
-            estimated_cost=800,
-        ),
-        Restaurant(
-            name="Demo Heritage Cafe",
+            name="Test Restaurant",
             location=request.destination,
             cuisine="Indian",
             price_range="₹₹",
-            estimated_cost=600,
-        ),
+            estimated_cost=800,
+        )
     ]
 
 
-# ============================================================
-# MOCK RECOMMENDATION AGENT
-# ============================================================
-
-def mock_recommendation_agent(
+def fake_recommendation_agent(
     request,
     weather,
     transport_options,
     accommodation_options,
-    restaurants,
 ):
+    """
+    The important part of this fake agent is its signature.
 
-    print("  [MOCK] Recommendation Agent called")
+    It accepts:
+    - request
+    - weather
+    - transport options
+    - accommodation options
 
-    # Verify that the recommendation agent receives
-    # all information collected by the orchestrator.
+    It does NOT accept restaurants.
+    """
 
     assert request.destination == "Goa"
-    assert weather is not None
-    assert len(transport_options) > 0
-    assert len(accommodation_options) > 0
-    assert len(restaurants) > 0
+
+    assert weather.destination == "Goa"
+
+    assert len(transport_options) == 2
+
+    assert len(accommodation_options) == 1
 
     return RecommendationResult(
         activities=[
             Activity(
-                name="Beach Day",
-                location="North Goa",
-                category="Beach",
+                name="Beach Yoga",
+                location="Goa",
+                category="Wellness",
                 estimated_cost=500,
-                duration="4 hours",
-                description="Relax and enjoy the beach.",
+                duration="1 hour",
+                description="Yoga near the beach.",
             )
         ],
         attractions=[
             Attraction(
                 name="Fort Aguada",
                 location="Goa",
-                category="Heritage",
-                estimated_cost=50,
+                category="Historical",
+                estimated_cost=100,
                 duration="2 hours",
-                description="Historic Portuguese fort.",
+                description="Historic fort.",
                 available_days=[],
-                opening_hours="09:00-18:00",
+                opening_hours="9 AM - 6 PM",
             )
         ],
-        restaurants=restaurants,
     )
 
 
-# ============================================================
-# TEST
-# ============================================================
-
 def main():
-
     print("\nTesting TripMind Orchestration Agent")
+    print("=" * 60)
 
     request = TripRequest(
+        source="Kolkata",
         destination="Goa",
-        start_date="2026-11-10",
-        end_date="2026-11-14",
+        start_date="2026-10-10",
+        end_date="2026-10-12",
         travelers=2,
         budget=50000,
         currency="INR",
-        preferences=TripPreferences(
-            interests=[
-                "beaches",
-                "culture",
-                "nature",
-            ],
-            accommodation_type="comfortable",
-            transport_preference="any",
-            food_preferences=[
-                "Indian",
-                "seafood",
-            ],
-            travel_pace="balanced",
-        ),
     )
 
     orchestrator = OrchestrationAgent(
-        weather_agent=mock_weather_agent,
-        transport_agent=mock_transport_agent,
-        accommodation_agent=mock_accommodation_agent,
-        restaurant_agent=mock_restaurant_agent,
-        recommendation_agent=mock_recommendation_agent,
+        weather_agent=fake_weather_agent,
+        transport_agent=fake_transport_agent,
+        accommodation_agent=fake_accommodation_agent,
+        restaurant_agent=fake_restaurant_agent,
+        recommendation_agent=fake_recommendation_agent,
     )
+
+    print("\nRunning orchestration...")
 
     state = orchestrator.run(request)
 
     print("\n" + "=" * 60)
-    print("TEST RESULTS")
+    print("ORCHESTRATION VALIDATION")
     print("=" * 60)
 
+    assert state.request.destination == "Goa"
+    print("  ✓ Trip request stored")
+
+    assert state.weather is not None
+    print("  ✓ Weather stored independently")
+
+    assert len(state.outbound_transport_options) == 1
+    print("  ✓ Outbound transport stored")
+
+    assert len(state.return_transport_options) == 1
+    print("  ✓ Return transport stored")
+
+    assert len(state.accommodation_options) == 1
+    print("  ✓ Accommodation stored")
+
+    assert len(state.restaurants) == 1
+    print("  ✓ Restaurants stored independently")
+
+    assert state.recommendations is not None
+    print("  ✓ Recommendation result stored")
+
+    assert len(state.recommendations.activities) == 1
+    print("  ✓ Activities received from Recommendation Agent")
+
+    assert len(state.recommendations.attractions) == 1
+    print("  ✓ Attractions received from Recommendation Agent")
+
+    print("\nArchitecture validation:")
+
     print(
-        f"\nWeather: "
-        f"{len(state.weather.forecast)} forecast entry"
+        "  ✓ Restaurant Agent output remains in state.restaurants"
     )
 
     print(
-        f"Transport options: "
-        f"{len(state.outbound_transport_options) + len(state.return_transport_options)}"
+        "  ✓ Recommendation Agent receives no restaurant data"
     )
 
     print(
-        f"Accommodation options: "
-        f"{len(state.accommodation_options)}"
+        "  ✓ Recommendation Agent produces activities"
     )
 
     print(
-        f"Restaurant options: "
-        f"{len(state.restaurants)}"
+        "  ✓ Recommendation Agent produces attractions"
     )
 
     print(
-        f"Recommended activities: "
-        f"{len(state.recommendations.activities)}"
-    )
-
-    print(
-        f"Recommended attractions: "
-        f"{len(state.recommendations.attractions)}"
+        "  ✓ Orchestrator keeps agent responsibilities separate"
     )
 
     print("\n✅ Orchestration Agent test passed.")

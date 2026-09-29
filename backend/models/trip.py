@@ -78,8 +78,36 @@ class WeatherInfo(BaseModel):
 class RecommendationResult(BaseModel):
     activities: List[Activity] = Field(default_factory=list)
     attractions: List[Attraction] = Field(default_factory=list)
+    
+class PlannedDay(BaseModel):
+    date: str
+    activities: List[Activity] = Field(default_factory=list)
+    attractions: List[Attraction] = Field(default_factory=list)
+    restaurants: List[Restaurant] = Field(default_factory=list)
+    estimated_cost: float = 0
+
+
+class PlanningOption(BaseModel):
+    name: str
+    description: Optional[str] = None
+
+    outbound_transport: Optional[TransportOption] = None
+    return_transport: Optional[TransportOption] = None
+    accommodation: Optional[AccommodationOption] = None
+
+    activities: List[Activity] = Field(default_factory=list)
+    attractions: List[Attraction] = Field(default_factory=list)
     restaurants: List[Restaurant] = Field(default_factory=list)
 
+    daily_plan: List[PlannedDay] = Field(default_factory=list)
+
+    estimated_total: float = 0
+    remaining_budget: float = 0
+    within_budget: bool = False
+
+
+class PlanningResult(BaseModel):
+    options: List[PlanningOption] = Field(default_factory=list)
 
 class SelectedTripOptions(BaseModel):
     outbound_transport:Optional[TransportOption] = None
@@ -108,6 +136,7 @@ class TripState(BaseModel):
     packing_list: List[str] = Field(default_factory=list)
     final_itinerary: Optional[Dict[str, Any]] = None
     budget_summary: Optional[Dict[str, Any]] = None
+    planning_result: Optional[PlanningResult] = None
 
 
 class TripSelectionRequest(BaseModel):

@@ -14,6 +14,7 @@ from backend.trip_store import get_trip, save_trip, update_trip
 from backend.agents.packing_agent import PackingAgent
 from backend.agents.itinerary_agent import ItineraryAgent
 from backend.budget import BudgetCalculator
+from backend.planning_engine import PlanningEngine
 
 
 app = FastAPI(
@@ -39,6 +40,7 @@ orchestrator = OrchestrationAgent(
     recommendation_agent=recommendation_agent.run,
 )
 
+planning_engine = PlanningEngine()
 
 @app.get("/")
 def root():
@@ -57,16 +59,29 @@ def health():
 
 @app.post("/api/trip/plan")
 def create_trip_plan(request: TripRequest):
+    # 1. Run agents ONCE
     state = orchestrator.run(request)
 
+    # 2. Create trip ID
     trip_id = str(uuid.uuid4())
 
+    # 3. Save complete agent-generated data to Redis
     save_trip(trip_id, state)
+
+    # 4. Read the saved state from Redis
+    state = get_trip(trip_id)
+
+    # 5. Generate planning options using cached data
+    state.planning_result = planning_engine.run(state)
+
+    # 6. Save planning result to Redis
+    update_trip(trip_id, state)
 
     return {
         "trip_id": trip_id,
         "trip": state.model_dump(),
     }
+
 
 @app.get("/api/trip/{trip_id}")
 def get_trip_details(trip_id: str):
@@ -86,34 +101,138 @@ def get_trip_details(trip_id: str):
 
 @app.post("/api/trip/select")
 def select_trip_options(selection: TripSelectionRequest):
+
+    # ============================================================
+    # LOAD TRIP FROM REDIS
+    # ============================================================
+
     try:
-        state = get_trip(selection.trip_id)
+
+        state = get_trip(
+            selection.trip_id
+        )
+
     except KeyError:
+
         raise HTTPException(
             status_code=404,
-            detail="Trip not found. The trip_id may be invalid or expired.",
+            detail=(
+                "Trip not found. "
+                "The trip_id may be invalid or expired."
+            ),
         )
+
+    # ============================================================
+    # APPLY USER SELECTIONS
+    # ============================================================
+
     try:
+
         state = TripSelection.apply_selection(
             state=state,
-            outbound_transport=selection.outbound_transport,
-            return_transport=selection.return_transport,
-            accommodation=selection.accommodation,
-            activities=selection.activities,
-            attractions=selection.attractions,
-            restaurants=selection.restaurants,
+
+            outbound_transport=(
+                selection.outbound_transport
+            ),
+
+            return_transport=(
+                selection.return_transport
+            ),
+
+            accommodation=(
+                selection.accommodation
+            ),
+
+            activities=(
+                selection.activities
+            ),
+
+            attractions=(
+                selection.attractions
+            ),
+
+            restaurants=(
+                selection.restaurants
+            ),
         )
+
     except ValueError as exc:
+
         raise HTTPException(
             status_code=400,
             detail=str(exc),
         )
 
-    update_trip(selection.trip_id, state)
+    # ============================================================
+    # CLEAR PREVIOUS FINAL TRIP PLAN
+    # ============================================================
+    #
+    # The user has changed their selections.
+    #
+    # Therefore the previous:
+    #   - packing list
+    #   - itinerary
+    #   - final budget
+    #
+    # are no longer valid.
+    #
+    # They will be regenerated only when the user clicks:
+    #
+    # "Generate My Final Trip Plan"
+    #
+    # ============================================================
+
+    state.packing_list = []
+
+    state.final_itinerary = None
+
+    state.budget_summary = None
+
+    # ============================================================
+    # RECALCULATE PLANNING OPTIONS
+    # ============================================================
+    #
+    # This is deterministic Python.
+    #
+    # It does NOT call:
+    #   - Transport Agent
+    #   - Accommodation Agent
+    #   - Restaurant Agent
+    #   - Recommendation Agent
+    #   - Packing Agent
+    #   - Itinerary Agent
+    #
+    # It uses the already cached trip data.
+    #
+    # ============================================================
+
+    state.planning_result = (
+        planning_engine.run(state)
+    )
+
+    # ============================================================
+    # SAVE UPDATED STATE TO REDIS
+    # ============================================================
+
+    update_trip(
+        selection.trip_id,
+        state,
+    )
+
+    # ============================================================
+    # RETURN UPDATED SELECTION + PLANNING
+    # ============================================================
 
     return {
         "trip_id": selection.trip_id,
-        "selected_options": state.selected_options.model_dump(),
+
+        "selected_options": (
+            state.selected_options.model_dump()
+        ),
+
+        "planning_result": (
+            state.planning_result.model_dump()
+        ),
     }
 
 @app.post("/api/trip/finalize")

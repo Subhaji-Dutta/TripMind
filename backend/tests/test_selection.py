@@ -47,7 +47,7 @@ def main():
     assert state.accommodation_options
     assert state.recommendations.activities
     assert state.recommendations.attractions
-    assert state.recommendations.restaurants
+    assert state.restaurants
 
     # --------------------------------------------------
     # SIMULATE USER SELECTION
@@ -74,7 +74,7 @@ def main():
     )
 
     selected_restaurant = (
-        state.recommendations.restaurants[0]
+        state.restaurants[0]
     )
 
     print("\n" + "=" * 60)

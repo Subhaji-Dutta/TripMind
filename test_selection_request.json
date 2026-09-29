@@ -1,0 +1,94 @@
+{
+  "trip_id": "df6b48e9-4edc-44ea-bb6d-78d836021b72",
+  "outbound_transport": {
+    "mode": "Train",
+    "provider": "Indian Railways",
+    "departure": "New Delhi",
+    "arrival": "Chennai Central",
+    "duration": "30h 00m",
+    "estimated_cost": 8000.0
+  },
+  "return_transport": {
+    "mode": "Train",
+    "provider": "Indian Railways",
+    "departure": "Chennai Central",
+    "arrival": "New Delhi",
+    "duration": "30h 00m",
+    "estimated_cost": 8000.0
+  },
+  "accommodation": {
+    "name": "Hotel Sea Breeze",
+    "location": "Besant Nagar, Chennai",
+    "rating": 4.0,
+    "price_per_night": 3500.0,
+    "total_cost": 3500.0,
+    "amenities": [
+      "Wi-Fi",
+      "Breakfast",
+      "Air Conditioning",
+      "Free Parking"
+    ]
+  },
+  "activities": [
+    {
+      "name": "Marina Beach Sunset Walk",
+      "location": "Marina Beach, Chennai",
+      "category": "Beach",
+      "estimated_cost": 0.0,
+      "duration": "2 hours",
+      "description": "Stroll along the shoreline at sunset."
+    },
+    {
+      "name": "Scooter Rental for Beach Exploration",
+      "location": "Besant Nagar, Chennai",
+      "category": "Adventure",
+      "estimated_cost": 500.0,
+      "duration": "3 hours",
+      "description": "Rent a scooter to visit nearby beaches."
+    }
+  ],
+  "attractions": [
+    {
+      "name": "Marina Beach",
+      "location": "Marina Beach, Chennai",
+      "category": "Beach",
+      "estimated_cost": 0.0,
+      "duration": "2-3 hours",
+      "description": "Longest urban beach in India.",
+      "available_days": [
+        "2026-09-30",
+        "2026-10-01"
+      ],
+      "opening_hours": "Open 24 hours"
+    },
+    {
+      "name": "Besant Nagar Beach",
+      "location": "Besant Nagar, Chennai",
+      "category": "Beach",
+      "estimated_cost": 0.0,
+      "duration": "2 hours",
+      "description": "Cozy beach with cafes.",
+      "available_days": [
+        "2026-09-30",
+        "2026-10-01"
+      ],
+      "opening_hours": "Open 24 hours"
+    }
+  ],
+  "restaurants": [
+    {
+      "name": "Kumar's",
+      "location": "T. Nagar",
+      "cuisine": "South Indian",
+      "price_range": "₹/₹₹/₹₹₹",
+      "estimated_cost": 800.0
+    },
+    {
+      "name": "Anjappar",
+      "location": "Adyar",
+      "cuisine": "Chettinad",
+      "price_range": "₹/₹₹/₹₹₹",
+      "estimated_cost": 1200.0
+    }
+  ]
+}

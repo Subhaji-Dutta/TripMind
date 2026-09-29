@@ -135,7 +135,7 @@ class TripSelection:
         for restaurant in restaurants:
             if not TripSelection._restaurant_matches(
                 restaurant,
-                state.recommendations.restaurants,
+                state.restaurants,
             ):
                 raise ValueError(
                     f"Selected restaurant '{restaurant.name}' "
