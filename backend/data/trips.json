@@ -1,0 +1,3525 @@
+{
+  "115effc2-659a-4d79-8e8b-be594aa299cf": {
+    "request": {
+      "source": "Kolkata",
+      "destination": "Goa",
+      "start_date": "2026-09-27",
+      "end_date": "2026-09-30",
+      "travelers": 2,
+      "budget": 50000.0,
+      "currency": "INR",
+      "preferences": {
+        "interests": [
+          "beaches",
+          "history"
+        ],
+        "accommodation_type": "comfortable",
+        "transport_preference": "any",
+        "food_preferences": [
+          "seafood"
+        ],
+        "travel_pace": "balanced"
+      }
+    },
+    "weather": {
+      "destination": "Goa",
+      "forecast": [
+        {
+          "date": "2026-09-27",
+          "temperature_c": 25.1,
+          "condition": "Overcast",
+          "weather_code": 3,
+          "rain_probability": 41
+        },
+        {
+          "date": "2026-09-28",
+          "temperature_c": 25.0,
+          "condition": "Light Drizzle",
+          "weather_code": 51,
+          "rain_probability": 6
+        },
+        {
+          "date": "2026-09-29",
+          "temperature_c": 26.7,
+          "condition": "Mainly Clear",
+          "weather_code": 1,
+          "rain_probability": 0
+        },
+        {
+          "date": "2026-09-30",
+          "temperature_c": 27.4,
+          "condition": "Clear Sky",
+          "weather_code": 0,
+          "rain_probability": 4
+        }
+      ]
+    },
+    "outbound_transport_options": [],
+    "return_transport_options": [],
+    "accommodation_options": [
+      {
+        "name": "Baga Beach Resort",
+        "location": "Baga Beach, North Goa",
+        "rating": 4.3,
+        "price_per_night": 4500.0,
+        "total_cost": 13500.0,
+        "amenities": [
+          "Wi-Fi",
+          "Breakfast",
+          "Pool",
+          "Seafood Restaurant"
+        ]
+      },
+      {
+        "name": "Fort Aguada Heritage Hotel",
+        "location": "Calangute, North Goa",
+        "rating": 4.5,
+        "price_per_night": 6500.0,
+        "total_cost": 19500.0,
+        "amenities": [
+          "Wi-Fi",
+          "Breakfast",
+          "Historical Tours",
+          "Seafood Dining"
+        ]
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Fisherman's Wharf",
+        "location": "Baga",
+        "cuisine": "Seafood",
+        "price_range": "₹/₹₹/₹₹₹",
+        "estimated_cost": 1200.0
+      },
+      {
+        "name": "The Fishermen's Wharf",
+        "location": "Calangute",
+        "cuisine": "Seafood",
+        "price_range": "₹/₹₹/₹₹₹",
+        "estimated_cost": 1100.0
+      },
+      {
+        "name": "Mum's Kitchen",
+        "location": "Panjim",
+        "cuisine": "Seafood",
+        "price_range": "₹/₹₹/₹₹₹",
+        "estimated_cost": 1300.0
+      }
+    ],
+    "recommendations": {
+      "activities": [
+        {
+          "name": "Sunset Cruise",
+          "location": "Baga Beach",
+          "category": "Boat Ride",
+          "estimated_cost": 1500.0,
+          "duration": "2 hours",
+          "description": "Enjoy a scenic sunset cruise along the Arabian Sea, with live music and a light snack."
+        },
+        {
+          "name": "Beach Yoga Session",
+          "location": "Baga Beach",
+          "category": "Wellness",
+          "estimated_cost": 800.0,
+          "duration": "1 hour",
+          "description": "A guided yoga session on the beach, suitable for all levels, with a focus on relaxation and mindfulness."
+        }
+      ],
+      "attractions": [
+        {
+          "name": "Fort Aguada",
+          "location": "Calangute, North Goa",
+          "category": "Historical Site",
+          "estimated_cost": 50.0,
+          "duration": "2 hours",
+          "description": "Explore the 17th-century Portuguese fort, its lighthouse, and panoramic views of the Arabian Sea.",
+          "available_days": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opening_hours": "9:00 AM - 5:00 PM"
+        },
+        {
+          "name": "Baga Beach",
+          "location": "Baga Beach, North Goa",
+          "category": "Beach",
+          "estimated_cost": 0.0,
+          "duration": "3 hours",
+          "description": "A popular beach known for its vibrant nightlife, water sports, and golden sands.",
+          "available_days": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opening_hours": "Open all day"
+        }
+      ],
+      "restaurants": [
+        {
+          "name": "Fisherman's Wharf",
+          "location": "Baga",
+          "cuisine": "Seafood",
+          "price_range": "₹/₹₹/₹₹₹",
+          "estimated_cost": 1200.0
+        },
+        {
+          "name": "The Fishermen's Wharf",
+          "location": "Calangute",
+          "cuisine": "Seafood",
+          "price_range": "₹/₹₹/₹₹₹",
+          "estimated_cost": 1100.0
+        }
+      ]
+    },
+    "selected_options": {
+      "outbound_transport": null,
+      "return_transport": null,
+      "accommodation": {
+        "name": "Baga Beach Resort",
+        "location": "Baga Beach, North Goa",
+        "rating": 4.3,
+        "price_per_night": 4500.0,
+        "total_cost": 13500.0,
+        "amenities": [
+          "Wi-Fi",
+          "Breakfast",
+          "Pool",
+          "Seafood Restaurant"
+        ]
+      },
+      "activities": [
+        {
+          "name": "Sunset Cruise",
+          "location": "Baga Beach",
+          "category": "Boat Ride",
+          "estimated_cost": 1500.0,
+          "duration": "2 hours",
+          "description": "Enjoy a scenic sunset cruise along the Arabian Sea, with live music and a light snack."
+        }
+      ],
+      "attractions": [
+        {
+          "name": "Fort Aguada",
+          "location": "Calangute, North Goa",
+          "category": "Historical Site",
+          "estimated_cost": 50.0,
+          "duration": "2 hours",
+          "description": "Explore the 17th-century Portuguese fort, its lighthouse, and panoramic views of the Arabian Sea.",
+          "available_days": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opening_hours": "9:00 AM - 5:00 PM"
+        }
+      ],
+      "restaurants": [
+        {
+          "name": "Fisherman's Wharf",
+          "location": "Baga",
+          "cuisine": "Seafood",
+          "price_range": "₹/₹₹/₹₹₹",
+          "estimated_cost": 1200.0
+        }
+      ]
+    },
+    "packing_list": [
+      "Lightweight waterproof jacket",
+      "Compact travel umbrella",
+      "Comfortable walking shoes",
+      "Flip-flops or sandals",
+      "Sunscreen SPF 50",
+      "Sunglasses",
+      "Travel adapter (India)",
+      "Reusable water bottle",
+      "Light beach towel",
+      "Swimwear",
+      "Casual day outfit (shorts & t-shirt)",
+      "Light sweater or hoodie",
+      "Travel documents (tickets, ID, insurance)",
+      "Small day bag or backpack",
+      "Portable phone charger"
+    ],
+    "final_itinerary": {
+      "destination": "Goa",
+      "start_date": "2026-09-27",
+      "end_date": "2026-09-30",
+      "travelers": 2,
+      "days": [
+        {
+          "date": "2026-09-27",
+          "weather": {
+            "temperature_c": 25.1,
+            "condition": "Overcast",
+            "rain_probability": 41
+          },
+          "morning": {
+            "type": "activity",
+            "name": "No additional activity selected",
+            "location": "",
+            "duration": ""
+          },
+          "afternoon": {
+            "type": "attraction",
+            "name": "No additional attraction selected",
+            "location": "",
+            "duration": ""
+          },
+          "evening": {
+            "type": "restaurant",
+            "name": "No restaurant selected",
+            "location": "",
+            "cuisine": ""
+          }
+        },
+        {
+          "date": "2026-09-28",
+          "weather": {
+            "temperature_c": 25.0,
+            "condition": "Light Drizzle",
+            "rain_probability": 6
+          },
+          "morning": {
+            "type": "activity",
+            "name": "No additional activity selected",
+            "location": "",
+            "duration": ""
+          },
+          "afternoon": {
+            "type": "attraction",
+            "name": "No additional attraction selected",
+            "location": "",
+            "duration": ""
+          },
+          "evening": {
+            "type": "restaurant",
+            "name": "No restaurant selected",
+            "location": "",
+            "cuisine": ""
+          }
+        },
+        {
+          "date": "2026-09-29",
+          "weather": {
+            "temperature_c": 26.7,
+            "condition": "Mainly Clear",
+            "rain_probability": 0
+          },
+          "morning": {
+            "type": "activity",
+            "name": "Sunset Cruise",
+            "location": "Baga Beach",
+            "duration": "2 hours"
+          },
+          "afternoon": {
+            "type": "attraction",
+            "name": "Fort Aguada",
+            "location": "Calangute, North Goa",
+            "duration": "2 hours"
+          },
+          "evening": {
+            "type": "restaurant",
+            "name": "Fisherman's Wharf",
+            "location": "Baga",
+            "cuisine": "Seafood"
+          }
+        }
+      ]
+    },
+    "budget_summary": {
+      "currency": "INR",
+      "budget": 50000.0,
+      "breakdown": {
+        "transport": 16000.0,
+        "accommodation": 13500.0,
+        "activities": 3000.0,
+        "attractions": 100.0,
+        "restaurants": 2400.0
+      },
+      "estimated_total": 35000.0,
+      "remaining_budget": 15000.0,
+      "within_budget": true
+    }
+  },
+  "baa9c160-15ab-45f9-a043-c18f18ad3881": {
+    "request": {
+      "source": "Delhi",
+      "destination": "Goa",
+      "start_date": "2026-09-28",
+      "end_date": "2026-09-30",
+      "travelers": 2,
+      "budget": 50000.0,
+      "currency": "INR",
+      "preferences": {
+        "interests": [
+          "beaches",
+          "food"
+        ],
+        "accommodation_type": "comfortable",
+        "transport_preference": "any",
+        "food_preferences": [],
+        "travel_pace": "balanced"
+      }
+    },
+    "weather": {
+      "destination": "Goa",
+      "forecast": [
+        {
+          "date": "2026-09-28",
+          "temperature_c": 25.1,
+          "condition": "Light Drizzle",
+          "weather_code": 51,
+          "rain_probability": 0
+        },
+        {
+          "date": "2026-09-29",
+          "temperature_c": 26.4,
+          "condition": "Mainly Clear",
+          "weather_code": 1,
+          "rain_probability": 0
+        },
+        {
+          "date": "2026-09-30",
+          "temperature_c": 26.8,
+          "condition": "Clear Sky",
+          "weather_code": 0,
+          "rain_probability": 0
+        }
+      ]
+    },
+    "outbound_transport_options": [],
+    "return_transport_options": [],
+    "accommodation_options": [
+      {
+        "name": "Sea Breeze Resort",
+        "location": "Calangute, Goa",
+        "rating": 4.3,
+        "price_per_night": 6500.0,
+        "total_cost": 13000.0,
+        "amenities": [
+          "Wi-Fi",
+          "Breakfast",
+          "Pool",
+          "Beach Access"
+        ]
+      },
+      {
+        "name": "Sunset Villa",
+        "location": "Baga, Goa",
+        "rating": 4.5,
+        "price_per_night": 8500.0,
+        "total_cost": 17000.0,
+        "amenities": [
+          "Wi-Fi",
+          "Breakfast",
+          "Spa",
+          "Private Balcony"
+        ]
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Thalassa",
+        "location": "Baga",
+        "cuisine": "Mediterranean",
+        "price_range": "₹₹/₹₹₹/₹₹₹₹",
+        "estimated_cost": 1200.0
+      },
+      {
+        "name": "Gunpowder",
+        "location": "Panjim",
+        "cuisine": "South Indian",
+        "price_range": "₹/₹₹/₹₹₹",
+        "estimated_cost": 800.0
+      },
+      {
+        "name": "The Fisherman's Wharf",
+        "location": "Calangute",
+        "cuisine": "Seafood",
+        "price_range": "₹₹/₹₹₹/₹₹₹₹",
+        "estimated_cost": 1500.0
+      }
+    ],
+    "recommendations": {
+      "activities": [
+        {
+          "name": "Beachside Yoga Session",
+          "location": "Calangute Beach",
+          "category": "Wellness",
+          "estimated_cost": 500.0,
+          "duration": "2 hours",
+          "description": "A calming yoga session on the beach with sunrise views, suitable for a balanced pace."
+        },
+        {
+          "name": "Goa Food Crawl",
+          "location": "Various local stalls",
+          "category": "Food Exploration",
+          "estimated_cost": 1000.0,
+          "duration": "3 hours",
+          "description": "Tasting local Goan delicacies such as fish curry, vindaloo, and sorpotel across popular food stalls."
+        }
+      ],
+      "attractions": [
+        {
+          "name": "Calangute Beach",
+          "location": "Calangute",
+          "category": "Beach",
+          "estimated_cost": 0.0,
+          "duration": "2 hours",
+          "description": "The largest beach in North Goa, ideal for sunbathing, swimming, and beachside activities.",
+          "available_days": [
+            "2026-09-28",
+            "2026-09-29",
+            "2026-09-30"
+          ],
+          "opening_hours": "24 hours"
+        },
+        {
+          "name": "Fort Aguada",
+          "location": "Sinquerim",
+          "category": "Historical",
+          "estimated_cost": 200.0,
+          "duration": "1.5 hours",
+          "description": "A 17th-century Portuguese fort offering panoramic views of the Arabian Sea and a glimpse into Goa's colonial past.",
+          "available_days": [
+            "2026-09-28",
+            "2026-09-29",
+            "2026-09-30"
+          ],
+          "opening_hours": "9:00 AM - 6:00 PM"
+        }
+      ],
+      "restaurants": [
+        {
+          "name": "Thalassa",
+          "location": "Baga",
+          "cuisine": "Mediterranean",
+          "price_range": "₹₹/₹₹₹/₹₹₹₹",
+          "estimated_cost": 1200.0
+        },
+        {
+          "name": "Gunpowder",
+          "location": "Panjim",
+          "cuisine": "South Indian",
+          "price_range": "₹/₹₹/₹₹₹",
+          "estimated_cost": 800.0
+        }
+      ]
+    },
+    "selected_options": null,
+    "packing_list": [],
+    "final_itinerary": null,
+    "budget_summary": null
+  },
+  "bd65898f-cf2d-4afc-b9f2-c3295f1c2d8f": {
+    "request": {
+      "source": "Delhi",
+      "destination": "Goa",
+      "start_date": "2026-09-28",
+      "end_date": "2026-09-30",
+      "travelers": 2,
+      "budget": 50000.0,
+      "currency": "INR",
+      "preferences": {
+        "interests": [
+          "beaches",
+          "food"
+        ],
+        "accommodation_type": "comfortable",
+        "transport_preference": "any",
+        "food_preferences": [],
+        "travel_pace": "balanced"
+      }
+    },
+    "weather": {
+      "destination": "Goa",
+      "forecast": [
+        {
+          "date": "2026-09-28",
+          "temperature_c": 25.1,
+          "condition": "Light Drizzle",
+          "weather_code": 51,
+          "rain_probability": 0
+        },
+        {
+          "date": "2026-09-29",
+          "temperature_c": 26.4,
+          "condition": "Mainly Clear",
+          "weather_code": 1,
+          "rain_probability": 0
+        },
+        {
+          "date": "2026-09-30",
+          "temperature_c": 26.8,
+          "condition": "Clear Sky",
+          "weather_code": 0,
+          "rain_probability": 0
+        }
+      ]
+    },
+    "outbound_transport_options": [
+      {
+        "mode": "Flight",
+        "provider": "IndiGo",
+        "departure": "Delhi",
+        "arrival": "Goa",
+        "duration": "2h 30m",
+        "estimated_cost": 40000.0
+      },
+      {
+        "mode": "Train",
+        "provider": "Indian Railways",
+        "departure": "Delhi",
+        "arrival": "Goa",
+        "duration": "30h 0m",
+        "estimated_cost": 4000.0
+      },
+      {
+        "mode": "Bus",
+        "provider": "RedBus",
+        "departure": "Delhi",
+        "arrival": "Goa",
+        "duration": "35h 0m",
+        "estimated_cost": 3000.0
+      }
+    ],
+    "return_transport_options": [
+      {
+        "mode": "Flight",
+        "provider": "Air India",
+        "departure": "Goa",
+        "arrival": "Delhi",
+        "duration": "2h 30m",
+        "estimated_cost": 40000.0
+      },
+      {
+        "mode": "Train",
+        "provider": "Indian Railways",
+        "departure": "Goa",
+        "arrival": "Delhi",
+        "duration": "30h 0m",
+        "estimated_cost": 4000.0
+      },
+      {
+        "mode": "Bus",
+        "provider": "RedBus",
+        "departure": "Goa",
+        "arrival": "Delhi",
+        "duration": "35h 0m",
+        "estimated_cost": 3000.0
+      }
+    ],
+    "accommodation_options": [
+      {
+        "name": "The Beach House Goa",
+        "location": "Baga Beach, North Goa",
+        "rating": 4.2,
+        "price_per_night": 2500.0,
+        "total_cost": 5000.0,
+        "amenities": [
+          "Wi-Fi",
+          "Breakfast",
+          "Pool",
+          "Beach Access"
+        ]
+      },
+      {
+        "name": "Sunset Retreat",
+        "location": "Calangute, North Goa",
+        "rating": 4.0,
+        "price_per_night": 2800.0,
+        "total_cost": 5600.0,
+        "amenities": [
+          "Wi-Fi",
+          "Breakfast",
+          "Free Parking",
+          "Beachfront"
+        ]
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Thalassa",
+        "location": "Baga",
+        "cuisine": "Mediterranean",
+        "price_range": "₹₹/₹₹₹/₹₹₹₹",
+        "estimated_cost": 1200.0
+      },
+      {
+        "name": "Gunpowder",
+        "location": "Panjim",
+        "cuisine": "South Indian",
+        "price_range": "₹/₹₹/₹₹₹",
+        "estimated_cost": 800.0
+      },
+      {
+        "name": "The Fisherman's Wharf",
+        "location": "Calangute",
+        "cuisine": "Seafood",
+        "price_range": "₹₹/₹₹₹/₹₹₹₹",
+        "estimated_cost": 1500.0
+      }
+    ],
+    "recommendations": {
+      "activities": [
+        {
+          "name": "Sunset Beach Walk",
+          "location": "Baga Beach",
+          "category": "Beach Activity",
+          "estimated_cost": 0.0,
+          "duration": "2 hours",
+          "description": "Stroll along Baga Beach during sunset, enjoy the sea breeze and vibrant evening atmosphere."
+        },
+        {
+          "name": "Seafood Tasting Tour",
+          "location": "Calangute",
+          "category": "Food Experience",
+          "estimated_cost": 2000.0,
+          "duration": "3 hours",
+          "description": "Guided tasting of local seafood dishes at various stalls, exploring Goan culinary flavors."
+        }
+      ],
+      "attractions": [
+        {
+          "name": "Baga Beach",
+          "location": "Baga",
+          "category": "Beach",
+          "estimated_cost": 0.0,
+          "duration": "4 hours",
+          "description": "Popular beach with vibrant nightlife, ideal for sunbathing and water sports.",
+          "available_days": [
+            "2026-09-28",
+            "2026-09-29",
+            "2026-09-30"
+          ],
+          "opening_hours": "24 hours"
+        },
+        {
+          "name": "Fort Aguada",
+          "location": "Aguada",
+          "category": "Historical Site",
+          "estimated_cost": 0.0,
+          "duration": "2 hours",
+          "description": "Historic fort with panoramic sea views, open to visitors.",
+          "available_days": [
+            "2026-09-28",
+            "2026-09-29",
+            "2026-09-30"
+          ],
+          "opening_hours": "9:00 AM - 5:00 PM"
+        }
+      ],
+      "restaurants": [
+        {
+          "name": "Thalassa",
+          "location": "Baga",
+          "cuisine": "Mediterranean",
+          "price_range": "₹₹/₹₹₹/₹₹₹₹",
+          "estimated_cost": 1200.0
+        },
+        {
+          "name": "The Fisherman's Wharf",
+          "location": "Calangute",
+          "cuisine": "Seafood",
+          "price_range": "₹₹/₹₹₹/₹₹₹₹",
+          "estimated_cost": 1500.0
+        }
+      ]
+    },
+    "selected_options": null,
+    "packing_list": [],
+    "final_itinerary": null,
+    "budget_summary": null
+  },
+  "ebb63a8f-c978-4388-bc57-4ea910a74676": {
+    "request": {
+      "source": "Delhi",
+      "destination": "Goa",
+      "start_date": "2026-09-28",
+      "end_date": "2026-09-30",
+      "travelers": 2,
+      "budget": 50000.0,
+      "currency": "INR",
+      "preferences": {
+        "interests": [
+          "beaches",
+          "food"
+        ],
+        "accommodation_type": "comfortable",
+        "transport_preference": "any",
+        "food_preferences": [],
+        "travel_pace": "balanced"
+      }
+    },
+    "weather": {
+      "destination": "Goa",
+      "forecast": [
+        {
+          "date": "2026-09-28",
+          "temperature_c": 25.1,
+          "condition": "Light Drizzle",
+          "weather_code": 51,
+          "rain_probability": 0
+        },
+        {
+          "date": "2026-09-29",
+          "temperature_c": 26.4,
+          "condition": "Mainly Clear",
+          "weather_code": 1,
+          "rain_probability": 0
+        },
+        {
+          "date": "2026-09-30",
+          "temperature_c": 26.8,
+          "condition": "Clear Sky",
+          "weather_code": 0,
+          "rain_probability": 0
+        }
+      ]
+    },
+    "outbound_transport_options": [
+      {
+        "mode": "Flight",
+        "provider": "Air India",
+        "departure": "Delhi (Indira Gandhi International Airport)",
+        "arrival": "Goa (Dabolim Airport)",
+        "duration": "2h 30m",
+        "estimated_cost": 15000.0
+      },
+      {
+        "mode": "Train",
+        "provider": "Indian Railways",
+        "departure": "New Delhi Railway Station",
+        "arrival": "Madgaon Railway Station",
+        "duration": "30h 45m",
+        "estimated_cost": 6000.0
+      },
+      {
+        "mode": "Bus",
+        "provider": "RedBus",
+        "departure": "Delhi (New Delhi Bus Stand)",
+        "arrival": "Goa (Goa Bus Stand)",
+        "duration": "32h 00m",
+        "estimated_cost": 3000.0
+      }
+    ],
+    "return_transport_options": [
+      {
+        "mode": "Flight",
+        "provider": "Air India",
+        "departure": "Goa (Dabolim Airport)",
+        "arrival": "Delhi (Indira Gandhi International Airport)",
+        "duration": "2h 30m",
+        "estimated_cost": 15000.0
+      },
+      {
+        "mode": "Train",
+        "provider": "Indian Railways",
+        "departure": "Madgaon Railway Station",
+        "arrival": "New Delhi Railway Station",
+        "duration": "30h 45m",
+        "estimated_cost": 6000.0
+      },
+      {
+        "mode": "Bus",
+        "provider": "MakeMyTrip",
+        "departure": "Goa (Goa Bus Stand)",
+        "arrival": "Delhi (New Delhi Bus Stand)",
+        "duration": "32h 00m",
+        "estimated_cost": 3000.0
+      }
+    ],
+    "accommodation_options": [
+      {
+        "name": "Sea Breeze Resort",
+        "location": "Calangute Beach, Goa",
+        "rating": 4.3,
+        "price_per_night": 6500.0,
+        "total_cost": 13000.0,
+        "amenities": [
+          "Wi-Fi",
+          "Breakfast",
+          "Pool",
+          "Beach Access"
+        ]
+      },
+      {
+        "name": "Sunset Villa",
+        "location": "Baga Beach, Goa",
+        "rating": 4.5,
+        "price_per_night": 7500.0,
+        "total_cost": 15000.0,
+        "amenities": [
+          "Wi-Fi",
+          "Breakfast",
+          "Free Parking",
+          "Kitchenette"
+        ]
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Thalassa",
+        "location": "Baga",
+        "cuisine": "Mediterranean",
+        "price_range": "₹₹/₹₹₹/₹₹₹₹",
+        "estimated_cost": 1200.0
+      },
+      {
+        "name": "Gunpowder",
+        "location": "Panjim",
+        "cuisine": "South Indian",
+        "price_range": "₹/₹₹/₹₹₹",
+        "estimated_cost": 800.0
+      },
+      {
+        "name": "The Fisherman's Wharf",
+        "location": "Calangute",
+        "cuisine": "Seafood",
+        "price_range": "₹₹/₹₹₹/₹₹₹₹",
+        "estimated_cost": 1500.0
+      }
+    ],
+    "recommendations": {
+      "activities": [
+        {
+          "name": "Calangute Beach Sunset Walk",
+          "location": "Calangute Beach, Goa",
+          "category": "Beach",
+          "estimated_cost": 0.0,
+          "duration": "2 hours",
+          "description": "Enjoy a leisurely stroll along the golden sands during sunset, perfect for photography and relaxation."
+        },
+        {
+          "name": "Baga Beach Nightlife",
+          "location": "Baga Beach, Goa",
+          "category": "Nightlife",
+          "estimated_cost": 0.0,
+          "duration": "3 hours",
+          "description": "Experience vibrant music, beachside bars, and street food stalls after dark."
+        }
+      ],
+      "attractions": [
+        {
+          "name": "Fort Aguada",
+          "location": "Aguada, North Goa",
+          "category": "Historical",
+          "estimated_cost": 200.0,
+          "duration": "1.5 hours",
+          "description": "Explore the 17th-century Portuguese fort with panoramic sea views.",
+          "available_days": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opening_hours": "9:00 AM - 6:00 PM"
+        },
+        {
+          "name": "Anjuna Flea Market",
+          "location": "Anjuna, Goa",
+          "category": "Market",
+          "estimated_cost": 0.0,
+          "duration": "2 hours",
+          "description": "Browse eclectic stalls selling souvenirs, clothing, and local crafts.",
+          "available_days": [
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opening_hours": "10:00 AM - 4:00 PM"
+        }
+      ],
+      "restaurants": [
+        {
+          "name": "Thalassa",
+          "location": "Baga",
+          "cuisine": "Mediterranean",
+          "price_range": "₹₹/₹₹₹/₹₹₹₹",
+          "estimated_cost": 1200.0
+        },
+        {
+          "name": "The Fisherman's Wharf",
+          "location": "Calangute",
+          "cuisine": "Seafood",
+          "price_range": "₹₹/₹₹₹/₹₹₹₹",
+          "estimated_cost": 1500.0
+        }
+      ]
+    },
+    "selected_options": null,
+    "packing_list": [],
+    "final_itinerary": null,
+    "budget_summary": null
+  },
+  "a8ab61f3-f34e-421d-aa67-680addef5774": {
+    "request": {
+      "source": "Delhi",
+      "destination": "Goa",
+      "start_date": "2026-09-28",
+      "end_date": "2026-09-30",
+      "travelers": 2,
+      "budget": 50000.0,
+      "currency": "INR",
+      "preferences": {
+        "interests": [
+          "beaches",
+          "food"
+        ],
+        "accommodation_type": "comfortable",
+        "transport_preference": "any",
+        "food_preferences": [],
+        "travel_pace": "balanced"
+      }
+    },
+    "weather": {
+      "destination": "Goa",
+      "forecast": [
+        {
+          "date": "2026-09-28",
+          "temperature_c": 25.1,
+          "condition": "Light Drizzle",
+          "weather_code": 51,
+          "rain_probability": 0
+        },
+        {
+          "date": "2026-09-29",
+          "temperature_c": 26.4,
+          "condition": "Mainly Clear",
+          "weather_code": 1,
+          "rain_probability": 0
+        },
+        {
+          "date": "2026-09-30",
+          "temperature_c": 26.8,
+          "condition": "Clear Sky",
+          "weather_code": 0,
+          "rain_probability": 0
+        }
+      ]
+    },
+    "outbound_transport_options": [
+      {
+        "mode": "Flight",
+        "provider": "IndiGo",
+        "departure": "Delhi",
+        "arrival": "Goa",
+        "duration": "2h 30m",
+        "estimated_cost": 12000.0
+      },
+      {
+        "mode": "Train",
+        "provider": "Indian Railways",
+        "departure": "Delhi",
+        "arrival": "Goa",
+        "duration": "48h",
+        "estimated_cost": 4000.0
+      },
+      {
+        "mode": "Bus",
+        "provider": "RedBus",
+        "departure": "Delhi",
+        "arrival": "Goa",
+        "duration": "36h",
+        "estimated_cost": 2500.0
+      }
+    ],
+    "return_transport_options": [
+      {
+        "mode": "Flight",
+        "provider": "Air India",
+        "departure": "Goa",
+        "arrival": "Delhi",
+        "duration": "2h 30m",
+        "estimated_cost": 12000.0
+      },
+      {
+        "mode": "Train",
+        "provider": "Indian Railways",
+        "departure": "Goa",
+        "arrival": "Delhi",
+        "duration": "48h",
+        "estimated_cost": 4000.0
+      },
+      {
+        "mode": "Bus",
+        "provider": "RedBus",
+        "departure": "Goa",
+        "arrival": "Delhi",
+        "duration": "36h",
+        "estimated_cost": 2500.0
+      }
+    ],
+    "accommodation_options": [
+      {
+        "name": "Calamari Beach Resort",
+        "location": "Calangute, Goa",
+        "rating": 4.2,
+        "price_per_night": 8000.0,
+        "total_cost": 16000.0,
+        "amenities": [
+          "Wi-Fi",
+          "Breakfast",
+          "Pool",
+          "Beach Access"
+        ]
+      },
+      {
+        "name": "Sunset Villa",
+        "location": "Baga, Goa",
+        "rating": 4.5,
+        "price_per_night": 12000.0,
+        "total_cost": 24000.0,
+        "amenities": [
+          "Wi-Fi",
+          "Breakfast",
+          "Spa",
+          "Free Parking"
+        ]
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Thalassa",
+        "location": "Baga",
+        "cuisine": "Mediterranean",
+        "price_range": "₹₹/₹₹₹/₹₹₹₹",
+        "estimated_cost": 1200.0
+      },
+      {
+        "name": "Gunpowder",
+        "location": "Panjim",
+        "cuisine": "South Indian",
+        "price_range": "₹/₹₹/₹₹₹",
+        "estimated_cost": 800.0
+      },
+      {
+        "name": "The Fisherman's Wharf",
+        "location": "Calangute",
+        "cuisine": "Seafood",
+        "price_range": "₹₹/₹₹₹/₹₹₹₹",
+        "estimated_cost": 1500.0
+      }
+    ],
+    "recommendations": {
+      "activities": [
+        {
+          "name": "Sunset Beach Walk",
+          "location": "Calangute Beach",
+          "category": "Beach",
+          "estimated_cost": 0.0,
+          "duration": "2 hours",
+          "description": "Enjoy a leisurely walk along Calangute Beach during sunset, perfect for photography and relaxation."
+        },
+        {
+          "name": "Goa Night Market Exploration",
+          "location": "Mapusa Market",
+          "category": "Market",
+          "estimated_cost": 200.0,
+          "duration": "3 hours",
+          "description": "Explore local stalls, try street food, and shop for souvenirs."
+        }
+      ],
+      "attractions": [
+        {
+          "name": "Calangute Beach",
+          "location": "Calangute",
+          "category": "Beach",
+          "estimated_cost": 0.0,
+          "duration": "2 hours",
+          "description": "Popular beach with golden sands, ideal for sunbathing and water sports.",
+          "available_days": [
+            "2026-09-28",
+            "2026-09-29",
+            "2026-09-30"
+          ],
+          "opening_hours": "24 hours"
+        },
+        {
+          "name": "Fort Aguada",
+          "location": "Aguada",
+          "category": "Historical",
+          "estimated_cost": 50.0,
+          "duration": "1.5 hours",
+          "description": "Historic fort with panoramic sea views.",
+          "available_days": [
+            "2026-09-28",
+            "2026-09-29",
+            "2026-09-30"
+          ],
+          "opening_hours": "09:00-18:00"
+        }
+      ],
+      "restaurants": [
+        {
+          "name": "Thalassa",
+          "location": "Baga",
+          "cuisine": "Mediterranean",
+          "price_range": "₹₹/₹₹₹/₹₹₹₹",
+          "estimated_cost": 1200.0
+        },
+        {
+          "name": "Gunpowder",
+          "location": "Panjim",
+          "cuisine": "South Indian",
+          "price_range": "₹/₹₹/₹₹₹",
+          "estimated_cost": 800.0
+        }
+      ]
+    },
+    "selected_options": null,
+    "packing_list": [],
+    "final_itinerary": null,
+    "budget_summary": null
+  },
+  "587209a3-0356-4b7d-8ea5-723f64d15076": {
+    "request": {
+      "source": "Delhi",
+      "destination": "Goa",
+      "start_date": "2026-09-28",
+      "end_date": "2026-09-30",
+      "travelers": 2,
+      "budget": 50000.0,
+      "currency": "INR",
+      "preferences": {
+        "interests": [
+          "beaches",
+          "food"
+        ],
+        "accommodation_type": "comfortable",
+        "transport_preference": "any",
+        "food_preferences": [],
+        "travel_pace": "balanced"
+      }
+    },
+    "weather": {
+      "destination": "Goa",
+      "forecast": [
+        {
+          "date": "2026-09-28",
+          "temperature_c": 25.3,
+          "condition": "Light Drizzle",
+          "weather_code": 51,
+          "rain_probability": 45
+        },
+        {
+          "date": "2026-09-29",
+          "temperature_c": 26.6,
+          "condition": "Mainly Clear",
+          "weather_code": 1,
+          "rain_probability": 0
+        },
+        {
+          "date": "2026-09-30",
+          "temperature_c": 26.9,
+          "condition": "Clear Sky",
+          "weather_code": 0,
+          "rain_probability": 0
+        }
+      ]
+    },
+    "outbound_transport_options": [
+      {
+        "mode": "Flight",
+        "provider": "IndiGo",
+        "departure": "Delhi",
+        "arrival": "Goa",
+        "duration": "3h 30m",
+        "estimated_cost": 15000.0
+      },
+      {
+        "mode": "Train",
+        "provider": "Indian Railways",
+        "departure": "Delhi",
+        "arrival": "Goa",
+        "duration": "30h",
+        "estimated_cost": 6000.0
+      },
+      {
+        "mode": "Bus",
+        "provider": "RedBus",
+        "departure": "Delhi",
+        "arrival": "Goa",
+        "duration": "36h",
+        "estimated_cost": 4000.0
+      }
+    ],
+    "return_transport_options": [
+      {
+        "mode": "Flight",
+        "provider": "Air India",
+        "departure": "Goa",
+        "arrival": "Delhi",
+        "duration": "3h 30m",
+        "estimated_cost": 15000.0
+      },
+      {
+        "mode": "Train",
+        "provider": "Indian Railways",
+        "departure": "Goa",
+        "arrival": "Delhi",
+        "duration": "30h",
+        "estimated_cost": 6000.0
+      },
+      {
+        "mode": "Bus",
+        "provider": "RedBus",
+        "departure": "Goa",
+        "arrival": "Delhi",
+        "duration": "36h",
+        "estimated_cost": 4000.0
+      }
+    ],
+    "accommodation_options": [
+      {
+        "name": "Baga Beach Resort",
+        "location": "Baga, Goa",
+        "rating": 4.3,
+        "price_per_night": 4200.0,
+        "total_cost": 8400.0,
+        "amenities": [
+          "Wi-Fi",
+          "Breakfast",
+          "Pool",
+          "Free parking"
+        ]
+      },
+      {
+        "name": "Calangute Sunset Inn",
+        "location": "Calangute, Goa",
+        "rating": 4.1,
+        "price_per_night": 3800.0,
+        "total_cost": 7600.0,
+        "amenities": [
+          "Wi-Fi",
+          "Breakfast",
+          "Beach access",
+          "Air conditioning"
+        ]
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Thalassa",
+        "location": "Baga",
+        "cuisine": "Mediterranean",
+        "price_range": "₹₹/₹₹₹/₹₹₹₹",
+        "estimated_cost": 1200.0
+      },
+      {
+        "name": "Gunpowder",
+        "location": "Panjim",
+        "cuisine": "South Indian",
+        "price_range": "₹/₹₹/₹₹₹",
+        "estimated_cost": 800.0
+      },
+      {
+        "name": "The Fisherman's Wharf",
+        "location": "Calangute",
+        "cuisine": "Seafood",
+        "price_range": "₹₹/₹₹₹/₹₹₹₹",
+        "estimated_cost": 1500.0
+      }
+    ],
+    "recommendations": {
+      "activities": [
+        {
+          "name": "Beach Sunset Walk",
+          "location": "Baga Beach",
+          "category": "Beach",
+          "estimated_cost": 0.0,
+          "duration": "2 hours",
+          "description": "Enjoy a leisurely walk along Baga Beach during sunset, with light drizzle on the first day but clear skies on the following days."
+        },
+        {
+          "name": "Goa Night Market Exploration",
+          "location": "Mapusa Market",
+          "category": "Nightlife",
+          "estimated_cost": 200.0,
+          "duration": "3 hours",
+          "description": "Explore local stalls, street food, and crafts in the vibrant Mapusa Night Market."
+        }
+      ],
+      "attractions": [
+        {
+          "name": "Baga Beach",
+          "location": "Baga",
+          "category": "Beach",
+          "estimated_cost": 0.0,
+          "duration": "3 hours",
+          "description": "Popular beach with water sports and vibrant nightlife.",
+          "available_days": [
+            "2026-09-28",
+            "2026-09-29",
+            "2026-09-30"
+          ],
+          "opening_hours": "24 hours"
+        },
+        {
+          "name": "Fort Aguada",
+          "location": "Aguada",
+          "category": "Historical",
+          "estimated_cost": 200.0,
+          "duration": "2 hours",
+          "description": "Historic fort offering panoramic views of the Arabian Sea.",
+          "available_days": [
+            "2026-09-28",
+            "2026-09-29",
+            "2026-09-30"
+          ],
+          "opening_hours": "9:00 AM - 5:00 PM"
+        }
+      ],
+      "restaurants": [
+        {
+          "name": "Thalassa",
+          "location": "Baga",
+          "cuisine": "Mediterranean",
+          "price_range": "₹₹/₹₹₹/₹₹₹₹",
+          "estimated_cost": 1200.0
+        },
+        {
+          "name": "The Fisherman's Wharf",
+          "location": "Calangute",
+          "cuisine": "Seafood",
+          "price_range": "₹₹/₹₹₹/₹₹₹₹",
+          "estimated_cost": 1500.0
+        }
+      ]
+    },
+    "selected_options": null,
+    "packing_list": [],
+    "final_itinerary": null,
+    "budget_summary": null
+  },
+  "41652edf-99bf-4dc8-97b5-12186e5025a0": {
+    "request": {
+      "source": "delhi",
+      "destination": "goa",
+      "start_date": "2026-09-28",
+      "end_date": "2026-09-30",
+      "travelers": 2,
+      "budget": 50000.0,
+      "currency": "INR",
+      "preferences": {
+        "interests": [
+          "beaches",
+          "food"
+        ],
+        "accommodation_type": "comfortable",
+        "transport_preference": "any",
+        "food_preferences": [],
+        "travel_pace": "balanced"
+      }
+    },
+    "weather": {
+      "destination": "goa",
+      "forecast": [
+        {
+          "date": "2026-09-28",
+          "temperature_c": 25.2,
+          "condition": "Light Drizzle",
+          "weather_code": 51,
+          "rain_probability": 45
+        },
+        {
+          "date": "2026-09-29",
+          "temperature_c": 26.5,
+          "condition": "Partly Cloudy",
+          "weather_code": 2,
+          "rain_probability": 0
+        },
+        {
+          "date": "2026-09-30",
+          "temperature_c": 27.1,
+          "condition": "Clear Sky",
+          "weather_code": 0,
+          "rain_probability": 0
+        }
+      ]
+    },
+    "outbound_transport_options": [
+      {
+        "mode": "Flight",
+        "provider": "Air India",
+        "departure": "Delhi (Indira Gandhi International Airport)",
+        "arrival": "Goa (Dabolim Airport)",
+        "duration": "2h 30m",
+        "estimated_cost": 12000.0
+      },
+      {
+        "mode": "Train",
+        "provider": "Indian Railways",
+        "departure": "New Delhi Railway Station",
+        "arrival": "Madgaon Railway Station",
+        "duration": "30h",
+        "estimated_cost": 8000.0
+      },
+      {
+        "mode": "Bus",
+        "provider": "RedBus",
+        "departure": "Delhi Bus Terminal",
+        "arrival": "Goa Bus Terminal",
+        "duration": "30h",
+        "estimated_cost": 4000.0
+      }
+    ],
+    "return_transport_options": [
+      {
+        "mode": "Flight",
+        "provider": "IndiGo",
+        "departure": "Goa (Dabolim Airport)",
+        "arrival": "Delhi (Indira Gandhi International Airport)",
+        "duration": "2h 30m",
+        "estimated_cost": 12000.0
+      },
+      {
+        "mode": "Train",
+        "provider": "Indian Railways",
+        "departure": "Madgaon Railway Station",
+        "arrival": "New Delhi Railway Station",
+        "duration": "30h",
+        "estimated_cost": 8000.0
+      },
+      {
+        "mode": "Bus",
+        "provider": "MakeMyTrip Bus",
+        "departure": "Goa Bus Terminal",
+        "arrival": "Delhi Bus Terminal",
+        "duration": "30h",
+        "estimated_cost": 4000.0
+      }
+    ],
+    "accommodation_options": [
+      {
+        "name": "Sea Breeze Resort",
+        "location": "Calangute Beach, Goa",
+        "rating": 4.3,
+        "price_per_night": 2800.0,
+        "total_cost": 5600.0,
+        "amenities": [
+          "Wi-Fi",
+          "Breakfast",
+          "Pool",
+          "Beach View"
+        ]
+      },
+      {
+        "name": "Sunset Retreat",
+        "location": "Baga Beach, Goa",
+        "rating": 4.1,
+        "price_per_night": 2600.0,
+        "total_cost": 5200.0,
+        "amenities": [
+          "Wi-Fi",
+          "Breakfast",
+          "Free Parking",
+          "Garden"
+        ]
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Fisherman's Wharf",
+        "location": "Calangute",
+        "cuisine": "Seafood",
+        "price_range": "₹₹/₹₹₹/₹₹₹₹",
+        "estimated_cost": 1200.0
+      },
+      {
+        "name": "Thalassa",
+        "location": "Baga",
+        "cuisine": "Greek",
+        "price_range": "₹₹/₹₹₹/₹₹₹₹",
+        "estimated_cost": 1500.0
+      },
+      {
+        "name": "Gunpowder",
+        "location": "Panjim",
+        "cuisine": "South Indian",
+        "price_range": "₹/₹₹/₹₹₹",
+        "estimated_cost": 800.0
+      }
+    ],
+    "recommendations": {
+      "activities": [
+        {
+          "name": "Calangute Beach Sunset Walk",
+          "location": "Calangute Beach",
+          "category": "Beach Walk",
+          "estimated_cost": 0.0,
+          "duration": "2 hours",
+          "description": "Enjoy a scenic sunset stroll along Calangute Beach."
+        },
+        {
+          "name": "Goa Night Market Exploration",
+          "location": "Mapusa Market",
+          "category": "Night Market",
+          "estimated_cost": 500.0,
+          "duration": "3 hours",
+          "description": "Explore local stalls, street food, and crafts."
+        }
+      ],
+      "attractions": [
+        {
+          "name": "Fort Aguada",
+          "location": "Aguada",
+          "category": "Historical Fort",
+          "estimated_cost": 200.0,
+          "duration": "1.5 hours",
+          "description": "Explore the 17th-century fort with panoramic sea views.",
+          "available_days": [
+            "2026-09-28",
+            "2026-09-29",
+            "2026-09-30"
+          ],
+          "opening_hours": "9:00 AM - 5:00 PM"
+        },
+        {
+          "name": "Baga Beach",
+          "location": "Baga",
+          "category": "Beach",
+          "estimated_cost": 0.0,
+          "duration": "2 hours",
+          "description": "Relax on the vibrant Baga Beach, known for its lively atmosphere.",
+          "available_days": [
+            "2026-09-28",
+            "2026-09-29",
+            "2026-09-30"
+          ],
+          "opening_hours": "24 hours"
+        }
+      ],
+      "restaurants": [
+        {
+          "name": "Fisherman's Wharf",
+          "location": "Calangute",
+          "cuisine": "Seafood",
+          "price_range": "₹₹/₹₹₹/₹₹₹₹",
+          "estimated_cost": 1200.0
+        },
+        {
+          "name": "Thalassa",
+          "location": "Baga",
+          "cuisine": "Greek",
+          "price_range": "₹₹/₹₹₹/₹₹₹₹",
+          "estimated_cost": 1500.0
+        }
+      ]
+    },
+    "selected_options": null,
+    "packing_list": [],
+    "final_itinerary": null,
+    "budget_summary": null
+  },
+  "c9d52b5f-edfa-4232-9692-def71ee44a22": {
+    "request": {
+      "source": "delhi",
+      "destination": "goa",
+      "start_date": "2026-09-28",
+      "end_date": "2026-09-30",
+      "travelers": 2,
+      "budget": 50000.0,
+      "currency": "INR",
+      "preferences": {
+        "interests": [
+          "beaches",
+          "food"
+        ],
+        "accommodation_type": "comfortable",
+        "transport_preference": "any",
+        "food_preferences": [],
+        "travel_pace": "balanced"
+      }
+    },
+    "weather": {
+      "destination": "goa",
+      "forecast": [
+        {
+          "date": "2026-09-28",
+          "temperature_c": 25.2,
+          "condition": "Light Drizzle",
+          "weather_code": 51,
+          "rain_probability": 45
+        },
+        {
+          "date": "2026-09-29",
+          "temperature_c": 26.5,
+          "condition": "Partly Cloudy",
+          "weather_code": 2,
+          "rain_probability": 0
+        },
+        {
+          "date": "2026-09-30",
+          "temperature_c": 27.1,
+          "condition": "Clear Sky",
+          "weather_code": 0,
+          "rain_probability": 0
+        }
+      ]
+    },
+    "outbound_transport_options": [
+      {
+        "mode": "Flight",
+        "provider": "IndiGo",
+        "departure": "Delhi",
+        "arrival": "Goa",
+        "duration": "3h 15m",
+        "estimated_cost": 30000.0
+      },
+      {
+        "mode": "Train",
+        "provider": "Indian Railways",
+        "departure": "Delhi",
+        "arrival": "Goa",
+        "duration": "30h 45m",
+        "estimated_cost": 12000.0
+      },
+      {
+        "mode": "Bus",
+        "provider": "RedBus",
+        "departure": "Delhi",
+        "arrival": "Goa",
+        "duration": "35h 30m",
+        "estimated_cost": 8000.0
+      }
+    ],
+    "return_transport_options": [
+      {
+        "mode": "Flight",
+        "provider": "Air India",
+        "departure": "Goa",
+        "arrival": "Delhi",
+        "duration": "3h 10m",
+        "estimated_cost": 30000.0
+      },
+      {
+        "mode": "Train",
+        "provider": "Indian Railways",
+        "departure": "Goa",
+        "arrival": "Delhi",
+        "duration": "30h 30m",
+        "estimated_cost": 12000.0
+      },
+      {
+        "mode": "Bus",
+        "provider": "MakeMyTrip",
+        "departure": "Goa",
+        "arrival": "Delhi",
+        "duration": "35h 15m",
+        "estimated_cost": 8000.0
+      }
+    ],
+    "accommodation_options": [
+      {
+        "name": "Baga Beach Resort",
+        "location": "Baga, North Goa",
+        "rating": 4.3,
+        "price_per_night": 18000.0,
+        "total_cost": 36000.0,
+        "amenities": [
+          "Wi-Fi",
+          "Breakfast",
+          "Beach Access",
+          "Pool"
+        ]
+      },
+      {
+        "name": "Calangute Sunset Villas",
+        "location": "Calangute, North Goa",
+        "rating": 4.1,
+        "price_per_night": 17000.0,
+        "total_cost": 34000.0,
+        "amenities": [
+          "Wi-Fi",
+          "Breakfast",
+          "Free Parking",
+          "Rooftop Terrace"
+        ]
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Fisherman's Wharf",
+        "location": "Cortelo",
+        "cuisine": "Seafood",
+        "price_range": "₹/₹₹/₹₹₹",
+        "estimated_cost": 1200.0
+      },
+      {
+        "name": "Thalassa",
+        "location": "Calangute",
+        "cuisine": "Mediterranean",
+        "price_range": "₹/₹₹/₹₹₹",
+        "estimated_cost": 1500.0
+      },
+      {
+        "name": "Gunpowder",
+        "location": "Panjim",
+        "cuisine": "South Indian",
+        "price_range": "₹/₹₹/₹₹₹",
+        "estimated_cost": 1000.0
+      }
+    ],
+    "recommendations": {
+      "activities": [
+        {
+          "name": "Calangute Beach Sunset Walk",
+          "location": "Calangute, Goa",
+          "category": "Beach",
+          "estimated_cost": 0.0,
+          "duration": "2 hours",
+          "description": "Stroll along Calangute Beach during sunset, enjoying the sea breeze and vibrant beach atmosphere."
+        },
+        {
+          "name": "Goa Food Tasting Tour",
+          "location": "Goa",
+          "category": "Food",
+          "estimated_cost": 0.0,
+          "duration": "3 hours",
+          "description": "Explore local Goan cuisine with a guided tasting tour, sampling seafood, vindaloo, and traditional sweets."
+        }
+      ],
+      "attractions": [
+        {
+          "name": "Fort Aguada",
+          "location": "Sinquerim, North Goa",
+          "category": "Historical",
+          "estimated_cost": 0.0,
+          "duration": "1.5 hours",
+          "description": "Historic 17th-century fort offering panoramic views of the Arabian Sea.",
+          "available_days": [
+            "2026-09-28",
+            "2026-09-29",
+            "2026-09-30"
+          ],
+          "opening_hours": "9:00 AM - 5:00 PM"
+        },
+        {
+          "name": "Anjuna Flea Market",
+          "location": "Anjuna, Goa",
+          "category": "Market",
+          "estimated_cost": 0.0,
+          "duration": "2 hours",
+          "description": "Vibrant market selling handicrafts, jewelry, and souvenirs.",
+          "available_days": [
+            "2026-09-28",
+            "2026-09-29",
+            "2026-09-30"
+          ],
+          "opening_hours": "10:00 AM - 6:00 PM"
+        }
+      ],
+      "restaurants": [
+        {
+          "name": "Fisherman's Wharf",
+          "location": "Cortelo",
+          "cuisine": "Seafood",
+          "price_range": "₹/₹₹/₹₹₹",
+          "estimated_cost": 1200.0
+        },
+        {
+          "name": "Thalassa",
+          "location": "Calangute",
+          "cuisine": "Mediterranean",
+          "price_range": "₹/₹₹/₹₹₹",
+          "estimated_cost": 1500.0
+        }
+      ]
+    },
+    "selected_options": null,
+    "packing_list": [],
+    "final_itinerary": null,
+    "budget_summary": null
+  },
+  "522da492-0202-4261-9f65-ed8f62d95afc": {
+    "request": {
+      "source": "delhi",
+      "destination": "goa",
+      "start_date": "2026-09-28",
+      "end_date": "2026-09-30",
+      "travelers": 2,
+      "budget": 50000.0,
+      "currency": "INR",
+      "preferences": {
+        "interests": [
+          "beaches",
+          "food"
+        ],
+        "accommodation_type": "comfortable",
+        "transport_preference": "any",
+        "food_preferences": [],
+        "travel_pace": "balanced"
+      }
+    },
+    "weather": {
+      "destination": "goa",
+      "forecast": [
+        {
+          "date": "2026-09-28",
+          "temperature_c": 25.2,
+          "condition": "Light Drizzle",
+          "weather_code": 51,
+          "rain_probability": 45
+        },
+        {
+          "date": "2026-09-29",
+          "temperature_c": 26.5,
+          "condition": "Partly Cloudy",
+          "weather_code": 2,
+          "rain_probability": 0
+        },
+        {
+          "date": "2026-09-30",
+          "temperature_c": 27.1,
+          "condition": "Clear Sky",
+          "weather_code": 0,
+          "rain_probability": 0
+        }
+      ]
+    },
+    "outbound_transport_options": [
+      {
+        "mode": "Flight",
+        "provider": "Air India",
+        "departure": "Indira Gandhi International Airport, Delhi",
+        "arrival": "Goa International Airport",
+        "duration": "2h 30m",
+        "estimated_cost": 14000.0
+      },
+      {
+        "mode": "Train",
+        "provider": "Indian Railways",
+        "departure": "New Delhi Railway Station",
+        "arrival": "Madgaon Railway Station, Goa",
+        "duration": "24h",
+        "estimated_cost": 6000.0
+      },
+      {
+        "mode": "Bus",
+        "provider": "RedBus",
+        "departure": "Delhi Bus Stand",
+        "arrival": "Goa Bus Stand",
+        "duration": "24h 30m",
+        "estimated_cost": 4000.0
+      }
+    ],
+    "return_transport_options": [
+      {
+        "mode": "Flight",
+        "provider": "IndiGo",
+        "departure": "Goa International Airport",
+        "arrival": "Indira Gandhi International Airport, Delhi",
+        "duration": "2h 30m",
+        "estimated_cost": 14000.0
+      },
+      {
+        "mode": "Train",
+        "provider": "Indian Railways",
+        "departure": "Madgaon Railway Station, Goa",
+        "arrival": "New Delhi Railway Station",
+        "duration": "24h",
+        "estimated_cost": 6000.0
+      },
+      {
+        "mode": "Bus",
+        "provider": "RedBus",
+        "departure": "Goa Bus Stand",
+        "arrival": "Delhi Bus Stand",
+        "duration": "24h 30m",
+        "estimated_cost": 4000.0
+      }
+    ],
+    "accommodation_options": [
+      {
+        "name": "Coconut Breeze Resort",
+        "location": "Baga Beach, Goa",
+        "rating": 4.5,
+        "price_per_night": 2500.0,
+        "total_cost": 5000.0,
+        "amenities": [
+          "Wi-Fi",
+          "Breakfast",
+          "Pool",
+          "Beach Access"
+        ]
+      },
+      {
+        "name": "Sunset Beach Hotel",
+        "location": "Calangute, Goa",
+        "rating": 4.0,
+        "price_per_night": 2800.0,
+        "total_cost": 5600.0,
+        "amenities": [
+          "Wi-Fi",
+          "Breakfast",
+          "Free Parking",
+          "Sea View"
+        ]
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Fisherman's Wharf",
+        "location": "Calangute",
+        "cuisine": "Seafood",
+        "price_range": "₹₹/₹₹₹/₹₹₹₹",
+        "estimated_cost": 1200.0
+      },
+      {
+        "name": "Thalassa",
+        "location": "Baga",
+        "cuisine": "Greek",
+        "price_range": "₹₹/₹₹₹/₹₹₹₹",
+        "estimated_cost": 1500.0
+      },
+      {
+        "name": "Gunpowder",
+        "location": "Panjim",
+        "cuisine": "South Indian",
+        "price_range": "₹/₹₹/₹₹₹",
+        "estimated_cost": 800.0
+      }
+    ],
+    "recommendations": {
+      "activities": [
+        {
+          "name": "Beach Volleyball at Baga Beach",
+          "location": "Baga Beach, Goa",
+          "category": "Sports",
+          "estimated_cost": 200.0,
+          "duration": "2 hours",
+          "description": "Enjoy a friendly game of beach volleyball with the waves as your backdrop."
+        },
+        {
+          "name": "Sunset Cruise from Calangute",
+          "location": "Calangute, Goa",
+          "category": "Leisure",
+          "estimated_cost": 1500.0,
+          "duration": "3 hours",
+          "description": "Relax on a sunset cruise along the Arabian Sea, with music and refreshments."
+        }
+      ],
+      "attractions": [
+        {
+          "name": "Baga Beach",
+          "location": "Baga, Goa",
+          "category": "Beach",
+          "estimated_cost": 0.0,
+          "duration": "3 hours",
+          "description": "A popular beach known for its vibrant nightlife and water sports.",
+          "available_days": [
+            "2026-09-28",
+            "2026-09-29",
+            "2026-09-30"
+          ],
+          "opening_hours": "24 hours"
+        },
+        {
+          "name": "Fort Aguada",
+          "location": "Aguada, Goa",
+          "category": "Historical",
+          "estimated_cost": 50.0,
+          "duration": "2 hours",
+          "description": "A 17th-century Portuguese fort offering panoramic views of the Arabian Sea.",
+          "available_days": [
+            "2026-09-28",
+            "2026-09-29",
+            "2026-09-30"
+          ],
+          "opening_hours": "9:00 AM - 6:00 PM"
+        }
+      ],
+      "restaurants": [
+        {
+          "name": "Fisherman's Wharf",
+          "location": "Calangute",
+          "cuisine": "Seafood",
+          "price_range": "₹₹/₹₹₹/₹₹₹₹",
+          "estimated_cost": 1200.0
+        },
+        {
+          "name": "Thalassa",
+          "location": "Baga",
+          "cuisine": "Greek",
+          "price_range": "₹₹/₹₹₹/₹₹₹₹",
+          "estimated_cost": 1500.0
+        }
+      ]
+    },
+    "selected_options": null,
+    "packing_list": [],
+    "final_itinerary": null,
+    "budget_summary": null
+  },
+  "ea816d94-4674-40a6-9b52-98739e8020c9": {
+    "request": {
+      "source": "Delhi",
+      "destination": "Goa",
+      "start_date": "2026-09-28",
+      "end_date": "2026-09-30",
+      "travelers": 2,
+      "budget": 50000.0,
+      "currency": "INR",
+      "preferences": {
+        "interests": [
+          "beaches",
+          "food"
+        ],
+        "accommodation_type": "comfortable",
+        "transport_preference": "any",
+        "food_preferences": [],
+        "travel_pace": "balanced"
+      }
+    },
+    "weather": {
+      "destination": "Goa",
+      "forecast": [
+        {
+          "date": "2026-09-28",
+          "temperature_c": 25.2,
+          "condition": "Light Drizzle",
+          "weather_code": 51,
+          "rain_probability": 45
+        },
+        {
+          "date": "2026-09-29",
+          "temperature_c": 26.5,
+          "condition": "Partly Cloudy",
+          "weather_code": 2,
+          "rain_probability": 0
+        },
+        {
+          "date": "2026-09-30",
+          "temperature_c": 27.1,
+          "condition": "Clear Sky",
+          "weather_code": 0,
+          "rain_probability": 0
+        }
+      ]
+    },
+    "outbound_transport_options": [
+      {
+        "mode": "Flight",
+        "provider": "Air India",
+        "departure": "Delhi",
+        "arrival": "Goa",
+        "duration": "2h 30m",
+        "estimated_cost": 20000.0
+      },
+      {
+        "mode": "Train",
+        "provider": "Indian Railways",
+        "departure": "New Delhi",
+        "arrival": "Goa",
+        "duration": "36h 15m",
+        "estimated_cost": 12000.0
+      },
+      {
+        "mode": "Bus",
+        "provider": "RedBus",
+        "departure": "Delhi",
+        "arrival": "Goa",
+        "duration": "36h 30m",
+        "estimated_cost": 8000.0
+      }
+    ],
+    "return_transport_options": [
+      {
+        "mode": "Flight",
+        "provider": "Vistara",
+        "departure": "Goa",
+        "arrival": "Delhi",
+        "duration": "2h 30m",
+        "estimated_cost": 21000.0
+      },
+      {
+        "mode": "Train",
+        "provider": "Indian Railways",
+        "departure": "Goa",
+        "arrival": "New Delhi",
+        "duration": "36h 15m",
+        "estimated_cost": 13000.0
+      },
+      {
+        "mode": "Bus",
+        "provider": "Savaari",
+        "departure": "Goa",
+        "arrival": "Delhi",
+        "duration": "36h 30m",
+        "estimated_cost": 9000.0
+      }
+    ],
+    "accommodation_options": [
+      {
+        "name": "Baga Beach Resort",
+        "location": "Baga, Goa",
+        "rating": 4.3,
+        "price_per_night": 4500.0,
+        "total_cost": 9000.0,
+        "amenities": [
+          "Wi-Fi",
+          "Breakfast",
+          "Pool",
+          "Beach Access"
+        ]
+      },
+      {
+        "name": "Calangute Sunset Hotel",
+        "location": "Calangute, Goa",
+        "rating": 4.0,
+        "price_per_night": 5000.0,
+        "total_cost": 10000.0,
+        "amenities": [
+          "Wi-Fi",
+          "Breakfast",
+          "Free Parking",
+          "Sea View"
+        ]
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Thalassa",
+        "location": "Baga",
+        "cuisine": "Mediterranean",
+        "price_range": "₹₹/₹₹₹/₹₹₹₹",
+        "estimated_cost": 1200.0
+      },
+      {
+        "name": "Gunpowder",
+        "location": "Panjim",
+        "cuisine": "South Indian",
+        "price_range": "₹/₹₹/₹₹₹",
+        "estimated_cost": 800.0
+      },
+      {
+        "name": "The Fisherman's Wharf",
+        "location": "Calangute",
+        "cuisine": "Seafood",
+        "price_range": "₹₹/₹₹₹/₹₹₹₹",
+        "estimated_cost": 1500.0
+      }
+    ],
+    "recommendations": {
+      "activities": [
+        {
+          "name": "Beach Yoga Session",
+          "location": "Baga Beach",
+          "category": "Wellness",
+          "estimated_cost": 500.0,
+          "duration": "1 hour",
+          "description": "Start your day with a calming yoga session on the sandy shores of Baga Beach, guided by a local instructor."
+        },
+        {
+          "name": "Goa Food Tour",
+          "location": "Panjim",
+          "category": "Food",
+          "estimated_cost": 2000.0,
+          "duration": "3 hours",
+          "description": "Explore Goa's culinary delights with a guided tour through Panjim's bustling markets and street stalls, sampling local specialties."
+        }
+      ],
+      "attractions": [
+        {
+          "name": "Calangute Beach",
+          "location": "Calangute",
+          "category": "Beach",
+          "estimated_cost": 0.0,
+          "duration": "2 hours",
+          "description": "Enjoy the golden sands and vibrant atmosphere of Calangute Beach, one of Goa's most popular seaside spots.",
+          "available_days": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opening_hours": "Open 24 hours"
+        },
+        {
+          "name": "Fort Aguada",
+          "location": "Aguada",
+          "category": "Historical",
+          "estimated_cost": 200.0,
+          "duration": "1.5 hours",
+          "description": "Visit the 17th-century Portuguese fort overlooking the Arabian Sea, offering panoramic views and a glimpse into Goa's colonial past.",
+          "available_days": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opening_hours": "9:00 AM - 6:00 PM"
+        }
+      ],
+      "restaurants": [
+        {
+          "name": "Thalassa",
+          "location": "Baga",
+          "cuisine": "Mediterranean",
+          "price_range": "₹₹/₹₹₹/₹₹₹₹",
+          "estimated_cost": 1200.0
+        },
+        {
+          "name": "Gunpowder",
+          "location": "Panjim",
+          "cuisine": "South Indian",
+          "price_range": "₹/₹₹/₹₹₹",
+          "estimated_cost": 800.0
+        }
+      ]
+    },
+    "selected_options": null,
+    "packing_list": [],
+    "final_itinerary": null,
+    "budget_summary": null
+  },
+  "3ef78adf-a580-4429-a2bf-7fdc208664e0": {
+    "request": {
+      "source": "Delhi",
+      "destination": "Goa",
+      "start_date": "2026-09-28",
+      "end_date": "2026-09-30",
+      "travelers": 2,
+      "budget": 50000.0,
+      "currency": "INR",
+      "preferences": {
+        "interests": [
+          "beaches",
+          "food"
+        ],
+        "accommodation_type": "comfortable",
+        "transport_preference": "any",
+        "food_preferences": [],
+        "travel_pace": "balanced"
+      }
+    },
+    "weather": {
+      "destination": "Goa",
+      "forecast": [
+        {
+          "date": "2026-09-28",
+          "temperature_c": 25.2,
+          "condition": "Light Drizzle",
+          "weather_code": 51,
+          "rain_probability": 45
+        },
+        {
+          "date": "2026-09-29",
+          "temperature_c": 26.5,
+          "condition": "Partly Cloudy",
+          "weather_code": 2,
+          "rain_probability": 0
+        },
+        {
+          "date": "2026-09-30",
+          "temperature_c": 27.1,
+          "condition": "Clear Sky",
+          "weather_code": 0,
+          "rain_probability": 0
+        }
+      ]
+    },
+    "outbound_transport_options": [
+      {
+        "mode": "Flight",
+        "provider": "IndiGo",
+        "departure": "Delhi",
+        "arrival": "Goa",
+        "duration": "3h 30m",
+        "estimated_cost": 24000.0
+      },
+      {
+        "mode": "Train",
+        "provider": "Indian Railways",
+        "departure": "Delhi",
+        "arrival": "Goa",
+        "duration": "30h 0m",
+        "estimated_cost": 8000.0
+      },
+      {
+        "mode": "Bus",
+        "provider": "RedBus",
+        "departure": "Delhi",
+        "arrival": "Goa",
+        "duration": "36h 0m",
+        "estimated_cost": 6000.0
+      }
+    ],
+    "return_transport_options": [
+      {
+        "mode": "Flight",
+        "provider": "Air India",
+        "departure": "Goa",
+        "arrival": "Delhi",
+        "duration": "3h 30m",
+        "estimated_cost": 24000.0
+      },
+      {
+        "mode": "Train",
+        "provider": "Indian Railways",
+        "departure": "Goa",
+        "arrival": "Delhi",
+        "duration": "30h 0m",
+        "estimated_cost": 8000.0
+      },
+      {
+        "mode": "Bus",
+        "provider": "RedBus",
+        "departure": "Goa",
+        "arrival": "Delhi",
+        "duration": "36h 0m",
+        "estimated_cost": 6000.0
+      }
+    ],
+    "accommodation_options": [
+      {
+        "name": "Sea Breeze Resort",
+        "location": "Baga Beach, North Goa",
+        "rating": 4.3,
+        "price_per_night": 2800.0,
+        "total_cost": 5600.0,
+        "amenities": [
+          "Wi-Fi",
+          "Breakfast",
+          "Pool",
+          "Beach Access"
+        ]
+      },
+      {
+        "name": "Sunset Inn",
+        "location": "Calangute Beach, North Goa",
+        "rating": 4.1,
+        "price_per_night": 2600.0,
+        "total_cost": 5200.0,
+        "amenities": [
+          "Wi-Fi",
+          "Breakfast",
+          "Free Parking",
+          "Garden"
+        ]
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Thalassa",
+        "location": "Baga",
+        "cuisine": "Mediterranean",
+        "price_range": "₹₹/₹₹₹/₹₹₹₹",
+        "estimated_cost": 1200.0
+      },
+      {
+        "name": "Gunpowder",
+        "location": "Panjim",
+        "cuisine": "South Indian",
+        "price_range": "₹/₹₹/₹₹₹",
+        "estimated_cost": 800.0
+      },
+      {
+        "name": "The Fisherman's Wharf",
+        "location": "Calangute",
+        "cuisine": "Seafood",
+        "price_range": "₹₹/₹₹₹/₹₹₹₹",
+        "estimated_cost": 1500.0
+      }
+    ],
+    "recommendations": {
+      "activities": [
+        {
+          "name": "Beach Yoga Session",
+          "location": "Baga Beach, North Goa",
+          "category": "Wellness",
+          "estimated_cost": 500.0,
+          "duration": "1 hour",
+          "description": "Start your day with a calming yoga session on the sandy shores of Baga Beach, suitable even with light drizzle."
+        },
+        {
+          "name": "Sunset Cruise",
+          "location": "Mandrem Beach, North Goa",
+          "category": "Leisure",
+          "estimated_cost": 2000.0,
+          "duration": "2 hours",
+          "description": "Enjoy a scenic sunset cruise along the Mandrem coastline, perfect for clear skies on the last day."
+        }
+      ],
+      "attractions": [
+        {
+          "name": "Fort Aguada",
+          "location": "Aguada, North Goa",
+          "category": "Historical",
+          "estimated_cost": 0.0,
+          "duration": "2 hours",
+          "description": "Explore the 17th-century Portuguese fort with panoramic sea views.",
+          "available_days": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opening_hours": "09:00 AM - 05:00 PM"
+        },
+        {
+          "name": "Dudhsagar Waterfall",
+          "location": "Ponda, South Goa",
+          "category": "Nature",
+          "estimated_cost": 200.0,
+          "duration": "3 hours",
+          "description": "Witness the majestic four-tiered waterfall, best visited on a clear day.",
+          "available_days": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opening_hours": "09:00 AM - 05:00 PM"
+        }
+      ],
+      "restaurants": [
+        {
+          "name": "Thalassa",
+          "location": "Baga",
+          "cuisine": "Mediterranean",
+          "price_range": "₹₹/₹₹₹/₹₹₹₹",
+          "estimated_cost": 1200.0
+        },
+        {
+          "name": "Gunpowder",
+          "location": "Panjim",
+          "cuisine": "South Indian",
+          "price_range": "₹/₹₹/₹₹₹",
+          "estimated_cost": 800.0
+        }
+      ]
+    },
+    "selected_options": {
+      "outbound_transport": {
+        "mode": "Train",
+        "provider": "Indian Railways",
+        "departure": "Delhi",
+        "arrival": "Goa",
+        "duration": "30h 0m",
+        "estimated_cost": 8000.0
+      },
+      "return_transport": {
+        "mode": "Train",
+        "provider": "Indian Railways",
+        "departure": "Goa",
+        "arrival": "Delhi",
+        "duration": "30h 0m",
+        "estimated_cost": 8000.0
+      },
+      "accommodation": {
+        "name": "Sunset Inn",
+        "location": "Calangute Beach, North Goa",
+        "rating": 4.1,
+        "price_per_night": 2600.0,
+        "total_cost": 5200.0,
+        "amenities": [
+          "Wi-Fi",
+          "Breakfast",
+          "Free Parking",
+          "Garden"
+        ]
+      },
+      "activities": [
+        {
+          "name": "Beach Yoga Session",
+          "location": "Baga Beach, North Goa",
+          "category": "Wellness",
+          "estimated_cost": 500.0,
+          "duration": "1 hour",
+          "description": "Start your day with a calming yoga session on the sandy shores of Baga Beach, suitable even with light drizzle."
+        }
+      ],
+      "attractions": [
+        {
+          "name": "Dudhsagar Waterfall",
+          "location": "Ponda, South Goa",
+          "category": "Nature",
+          "estimated_cost": 200.0,
+          "duration": "3 hours",
+          "description": "Witness the majestic four-tiered waterfall, best visited on a clear day.",
+          "available_days": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opening_hours": "09:00 AM - 05:00 PM"
+        }
+      ],
+      "restaurants": [
+        {
+          "name": "Thalassa",
+          "location": "Baga",
+          "cuisine": "Mediterranean",
+          "price_range": "₹₹/₹₹₹/₹₹₹₹",
+          "estimated_cost": 1200.0
+        }
+      ]
+    },
+    "packing_list": [
+      "Light waterproof jacket or compact umbrella",
+      "Comfortable walking shoes",
+      "Sandals or flip-flops",
+      "Swimwear",
+      "Light breathable T-shirts",
+      "Shorts",
+      "Light sweater or long-sleeve top for evenings",
+      "Yoga mat",
+      "Sunscreen SPF 50",
+      "Reusable water bottle",
+      "Travel pillow",
+      "Power bank",
+      "Phone charger",
+      "Travel documents (ID, tickets, insurance)",
+      "Basic toiletries (toothbrush, toothpaste, soap, deodorant)",
+      "Medications (pain reliever, antihistamine)",
+      "Snacks for train journey",
+      "Sunglasses",
+      "Hat or cap"
+    ],
+    "final_itinerary": {
+      "destination": "Goa",
+      "start_date": "2026-09-28",
+      "end_date": "2026-09-30",
+      "travelers": 2,
+      "days": [
+        {
+          "date": "2026-09-28",
+          "weather": {
+            "temperature_c": 25.2,
+            "condition": "Light Drizzle",
+            "rain_probability": 45
+          },
+          "morning": {
+            "type": "activity",
+            "name": "No additional activity selected",
+            "location": "",
+            "duration": ""
+          },
+          "afternoon": {
+            "type": "attraction",
+            "name": "No additional attraction selected",
+            "location": "",
+            "duration": ""
+          },
+          "evening": {
+            "type": "restaurant",
+            "name": "No restaurant selected",
+            "location": "",
+            "cuisine": ""
+          }
+        },
+        {
+          "date": "2026-09-29",
+          "weather": {
+            "temperature_c": 26.5,
+            "condition": "Partly Cloudy",
+            "rain_probability": 0
+          },
+          "morning": {
+            "type": "activity",
+            "name": "Beach Yoga Session",
+            "location": "Baga Beach, North Goa",
+            "duration": "1 hour"
+          },
+          "afternoon": {
+            "type": "attraction",
+            "name": "No additional attraction selected",
+            "location": "",
+            "duration": ""
+          },
+          "evening": {
+            "type": "restaurant",
+            "name": "Thalassa",
+            "location": "Baga",
+            "cuisine": "Mediterranean"
+          }
+        },
+        {
+          "date": "2026-09-30",
+          "weather": {
+            "temperature_c": 27.1,
+            "condition": "Clear Sky",
+            "rain_probability": 0
+          },
+          "morning": {
+            "type": "activity",
+            "name": "No additional activity selected",
+            "location": "",
+            "duration": ""
+          },
+          "afternoon": {
+            "type": "attraction",
+            "name": "Dudhsagar Waterfall",
+            "location": "Ponda, South Goa",
+            "duration": "3 hours"
+          },
+          "evening": {
+            "type": "restaurant",
+            "name": "No restaurant selected",
+            "location": "",
+            "cuisine": ""
+          }
+        }
+      ]
+    },
+    "budget_summary": {
+      "currency": "INR",
+      "budget": 50000.0,
+      "breakdown": {
+        "transport": 32000.0,
+        "accommodation": 5200.0,
+        "activities": 1000.0,
+        "attractions": 400.0,
+        "restaurants": 2400.0
+      },
+      "estimated_total": 41000.0,
+      "remaining_budget": 9000.0,
+      "within_budget": true
+    }
+  },
+  "0f3c5783-2c25-4d3f-ab81-7164c3ba1825": {
+    "request": {
+      "source": "delhi",
+      "destination": "goa",
+      "start_date": "2026-09-28",
+      "end_date": "2026-09-30",
+      "travelers": 2,
+      "budget": 50000.0,
+      "currency": "INR",
+      "preferences": {
+        "interests": [
+          "beaches",
+          "food"
+        ],
+        "accommodation_type": "comfortable",
+        "transport_preference": "any",
+        "food_preferences": [],
+        "travel_pace": "balanced"
+      }
+    },
+    "weather": {
+      "destination": "goa",
+      "forecast": [
+        {
+          "date": "2026-09-28",
+          "temperature_c": 25.2,
+          "condition": "Light Drizzle",
+          "weather_code": 51,
+          "rain_probability": 45
+        },
+        {
+          "date": "2026-09-29",
+          "temperature_c": 26.5,
+          "condition": "Partly Cloudy",
+          "weather_code": 2,
+          "rain_probability": 0
+        },
+        {
+          "date": "2026-09-30",
+          "temperature_c": 27.1,
+          "condition": "Clear Sky",
+          "weather_code": 0,
+          "rain_probability": 0
+        }
+      ]
+    },
+    "outbound_transport_options": [
+      {
+        "mode": "Flight",
+        "provider": "Air India",
+        "departure": "Delhi",
+        "arrival": "Goa",
+        "duration": "2h 30m",
+        "estimated_cost": 12000.0
+      },
+      {
+        "mode": "Train",
+        "provider": "Indian Railways",
+        "departure": "Delhi",
+        "arrival": "Goa",
+        "duration": "24h 15m",
+        "estimated_cost": 6000.0
+      },
+      {
+        "mode": "Bus",
+        "provider": "RedBus",
+        "departure": "Delhi",
+        "arrival": "Goa",
+        "duration": "24h 30m",
+        "estimated_cost": 4000.0
+      }
+    ],
+    "return_transport_options": [
+      {
+        "mode": "Flight",
+        "provider": "Air India",
+        "departure": "Goa",
+        "arrival": "Delhi",
+        "duration": "2h 30m",
+        "estimated_cost": 12000.0
+      },
+      {
+        "mode": "Train",
+        "provider": "Indian Railways",
+        "departure": "Goa",
+        "arrival": "Delhi",
+        "duration": "24h 15m",
+        "estimated_cost": 6000.0
+      },
+      {
+        "mode": "Bus",
+        "provider": "RedBus",
+        "departure": "Goa",
+        "arrival": "Delhi",
+        "duration": "24h 30m",
+        "estimated_cost": 4000.0
+      }
+    ],
+    "accommodation_options": [
+      {
+        "name": "Palolem Beach Resort",
+        "location": "Palolem Beach, South Goa",
+        "rating": 4.3,
+        "price_per_night": 6000.0,
+        "total_cost": 12000.0,
+        "amenities": [
+          "Wi-Fi",
+          "Breakfast",
+          "Free Parking"
+        ]
+      },
+      {
+        "name": "Calangute Seaside Hotel",
+        "location": "Calangute, North Goa",
+        "rating": 4.0,
+        "price_per_night": 4800.0,
+        "total_cost": 9600.0,
+        "amenities": [
+          "Wi-Fi",
+          "Breakfast",
+          "Free Parking"
+        ]
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Fisherman's Wharf",
+        "location": "Calangute",
+        "cuisine": "Seafood",
+        "price_range": "₹₹/₹₹₹/₹₹₹₹",
+        "estimated_cost": 1200.0
+      },
+      {
+        "name": "Thalassa",
+        "location": "Baga",
+        "cuisine": "Greek",
+        "price_range": "₹₹/₹₹₹/₹₹₹₹",
+        "estimated_cost": 1500.0
+      },
+      {
+        "name": "Gunpowder",
+        "location": "Panjim",
+        "cuisine": "South Indian",
+        "price_range": "₹/₹₹/₹₹₹",
+        "estimated_cost": 800.0
+      }
+    ],
+    "recommendations": {
+      "activities": [
+        {
+          "name": "Beach Yoga Session",
+          "location": "Palolem Beach, South Goa",
+          "category": "Wellness",
+          "estimated_cost": 500.0,
+          "duration": "1 hour",
+          "description": "A calming yoga session on the beach with a view of the sunset, suitable for a light drizzle day."
+        },
+        {
+          "name": "Parasailing Adventure",
+          "location": "Calangute Beach, North Goa",
+          "category": "Adventure",
+          "estimated_cost": 2000.0,
+          "duration": "1.5 hours",
+          "description": "Enjoy panoramic views of the Arabian Sea while being towed above the water."
+        }
+      ],
+      "attractions": [
+        {
+          "name": "Fort Aguada",
+          "location": "North Goa",
+          "category": "Historical",
+          "estimated_cost": 0.0,
+          "duration": "30 minutes",
+          "description": "A 17th-century Portuguese fort offering panoramic sea views and a glimpse into Goa's colonial past.",
+          "available_days": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opening_hours": "10:00 AM - 6:00 PM"
+        },
+        {
+          "name": "Anjuna Flea Market",
+          "location": "Anjuna, North Goa",
+          "category": "Shopping",
+          "estimated_cost": 0.0,
+          "duration": "2 hours",
+          "description": "A vibrant market selling handicrafts, jewelry, and souvenirs, best visited on a clear day.",
+          "available_days": [
+            "Saturday"
+          ],
+          "opening_hours": "10:00 AM - 6:00 PM"
+        }
+      ],
+      "restaurants": [
+        {
+          "name": "Fisherman's Wharf",
+          "location": "Calangute",
+          "cuisine": "Seafood",
+          "price_range": "₹₹/₹₹₹/₹₹₹₹",
+          "estimated_cost": 1200.0
+        },
+        {
+          "name": "Thalassa",
+          "location": "Baga",
+          "cuisine": "Greek",
+          "price_range": "₹₹/₹₹₹/₹₹₹₹",
+          "estimated_cost": 1500.0
+        }
+      ]
+    },
+    "selected_options": {
+      "outbound_transport": {
+        "mode": "Flight",
+        "provider": "Air India",
+        "departure": "Delhi",
+        "arrival": "Goa",
+        "duration": "2h 30m",
+        "estimated_cost": 12000.0
+      },
+      "return_transport": {
+        "mode": "Bus",
+        "provider": "RedBus",
+        "departure": "Goa",
+        "arrival": "Delhi",
+        "duration": "24h 30m",
+        "estimated_cost": 4000.0
+      },
+      "accommodation": {
+        "name": "Calangute Seaside Hotel",
+        "location": "Calangute, North Goa",
+        "rating": 4.0,
+        "price_per_night": 4800.0,
+        "total_cost": 9600.0,
+        "amenities": [
+          "Wi-Fi",
+          "Breakfast",
+          "Free Parking"
+        ]
+      },
+      "activities": [
+        {
+          "name": "Beach Yoga Session",
+          "location": "Palolem Beach, South Goa",
+          "category": "Wellness",
+          "estimated_cost": 500.0,
+          "duration": "1 hour",
+          "description": "A calming yoga session on the beach with a view of the sunset, suitable for a light drizzle day."
+        }
+      ],
+      "attractions": [
+        {
+          "name": "Fort Aguada",
+          "location": "North Goa",
+          "category": "Historical",
+          "estimated_cost": 0.0,
+          "duration": "30 minutes",
+          "description": "A 17th-century Portuguese fort offering panoramic sea views and a glimpse into Goa's colonial past.",
+          "available_days": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opening_hours": "10:00 AM - 6:00 PM"
+        }
+      ],
+      "restaurants": [
+        {
+          "name": "Fisherman's Wharf",
+          "location": "Calangute",
+          "cuisine": "Seafood",
+          "price_range": "₹₹/₹₹₹/₹₹₹₹",
+          "estimated_cost": 1200.0
+        }
+      ]
+    },
+    "packing_list": [
+      "Light waterproof jacket",
+      "Compact umbrella",
+      "Comfortable walking shoes",
+      "Flip-flops/sandals",
+      "Swimwear and beach towel",
+      "Sunscreen (SPF 30+)",
+      "Sunglasses and sun hat",
+      "Yoga mat or comfortable clothing for yoga",
+      "Reusable water bottle",
+      "Snacks for bus ride",
+      "Travel documents (ID, passport, boarding pass, travel insurance)",
+      "Phone charger, power bank, and travel adapter",
+      "Small day pack/backpack",
+      "Basic first aid kit",
+      "Camera or smartphone for photos"
+    ],
+    "final_itinerary": {
+      "destination": "goa",
+      "start_date": "2026-09-28",
+      "end_date": "2026-09-30",
+      "travelers": 2,
+      "days": [
+        {
+          "date": "2026-09-28",
+          "weather": {
+            "temperature_c": 25.2,
+            "condition": "Light Drizzle",
+            "rain_probability": 45
+          },
+          "morning": {
+            "type": "activity",
+            "name": "Beach Yoga Session",
+            "location": "Palolem Beach, South Goa",
+            "duration": "1 hour"
+          },
+          "afternoon": {
+            "type": "attraction",
+            "name": "No additional attraction selected",
+            "location": "",
+            "duration": ""
+          },
+          "evening": {
+            "type": "restaurant",
+            "name": "No restaurant selected",
+            "location": "",
+            "cuisine": ""
+          }
+        },
+        {
+          "date": "2026-09-29",
+          "weather": {
+            "temperature_c": 26.5,
+            "condition": "Partly Cloudy",
+            "rain_probability": 0
+          },
+          "morning": {
+            "type": "activity",
+            "name": "No additional activity selected",
+            "location": "",
+            "duration": ""
+          },
+          "afternoon": {
+            "type": "attraction",
+            "name": "No additional attraction selected",
+            "location": "",
+            "duration": ""
+          },
+          "evening": {
+            "type": "restaurant",
+            "name": "Fisherman's Wharf",
+            "location": "Calangute",
+            "cuisine": "Seafood"
+          }
+        },
+        {
+          "date": "2026-09-30",
+          "weather": {
+            "temperature_c": 27.1,
+            "condition": "Clear Sky",
+            "rain_probability": 0
+          },
+          "morning": {
+            "type": "activity",
+            "name": "No additional activity selected",
+            "location": "",
+            "duration": ""
+          },
+          "afternoon": {
+            "type": "attraction",
+            "name": "Fort Aguada",
+            "location": "North Goa",
+            "duration": "30 minutes"
+          },
+          "evening": {
+            "type": "restaurant",
+            "name": "No restaurant selected",
+            "location": "",
+            "cuisine": ""
+          }
+        }
+      ]
+    },
+    "budget_summary": {
+      "currency": "INR",
+      "budget": 50000.0,
+      "breakdown": {
+        "transport": 32000.0,
+        "accommodation": 9600.0,
+        "activities": 1000.0,
+        "attractions": 0.0,
+        "restaurants": 2400.0
+      },
+      "estimated_total": 45000.0,
+      "remaining_budget": 5000.0,
+      "within_budget": true
+    }
+  },
+  "2ccea423-7279-4582-849a-918de43e0659": {
+    "request": {
+      "source": "kolkata",
+      "destination": "chennai",
+      "start_date": "2026-09-28",
+      "end_date": "2026-09-30",
+      "travelers": 2,
+      "budget": 50000.0,
+      "currency": "INR",
+      "preferences": {
+        "interests": [
+          "beaches",
+          "food"
+        ],
+        "accommodation_type": "comfortable",
+        "transport_preference": "any",
+        "food_preferences": [],
+        "travel_pace": "balanced"
+      }
+    },
+    "weather": {
+      "destination": "chennai",
+      "forecast": [
+        {
+          "date": "2026-09-28",
+          "temperature_c": 35.7,
+          "condition": "Moderate Drizzle",
+          "weather_code": 53,
+          "rain_probability": 76
+        },
+        {
+          "date": "2026-09-29",
+          "temperature_c": 36.1,
+          "condition": "Moderate Drizzle",
+          "weather_code": 53,
+          "rain_probability": 65
+        },
+        {
+          "date": "2026-09-30",
+          "temperature_c": 35.6,
+          "condition": "Moderate Drizzle",
+          "weather_code": 53,
+          "rain_probability": 86
+        }
+      ]
+    },
+    "outbound_transport_options": [
+      {
+        "mode": "Flight",
+        "provider": "IndiGo",
+        "departure": "Kolkata",
+        "arrival": "Chennai",
+        "duration": "2h 45m",
+        "estimated_cost": 12000.0
+      },
+      {
+        "mode": "Train",
+        "provider": "Indian Railways",
+        "departure": "Kolkata (Howrah Station)",
+        "arrival": "Chennai (Chennai Central)",
+        "duration": "36h",
+        "estimated_cost": 8000.0
+      },
+      {
+        "mode": "Bus",
+        "provider": "RedBus",
+        "departure": "Kolkata",
+        "arrival": "Chennai",
+        "duration": "48h",
+        "estimated_cost": 4000.0
+      }
+    ],
+    "return_transport_options": [
+      {
+        "mode": "Flight",
+        "provider": "Air India",
+        "departure": "Chennai",
+        "arrival": "Kolkata",
+        "duration": "2h 45m",
+        "estimated_cost": 11000.0
+      },
+      {
+        "mode": "Train",
+        "provider": "Indian Railways",
+        "departure": "Chennai Central",
+        "arrival": "Kolkata (Howrah Station)",
+        "duration": "36h",
+        "estimated_cost": 8000.0
+      },
+      {
+        "mode": "Bus",
+        "provider": "MakeMyTrip",
+        "departure": "Chennai",
+        "arrival": "Kolkata",
+        "duration": "48h",
+        "estimated_cost": 4000.0
+      }
+    ],
+    "accommodation_options": [
+      {
+        "name": "The Grand Marina Hotel",
+        "location": "Besant Nagar, Chennai",
+        "rating": 4.3,
+        "price_per_night": 9500.0,
+        "total_cost": 19000.0,
+        "amenities": [
+          "Wi-Fi",
+          "Breakfast",
+          "Pool",
+          "Free parking"
+        ]
+      },
+      {
+        "name": "Sea Breeze Resort",
+        "location": "Thiruvanmiyur, Chennai",
+        "rating": 4.0,
+        "price_per_night": 8500.0,
+        "total_cost": 17000.0,
+        "amenities": [
+          "Wi-Fi",
+          "Breakfast",
+          "Beach access",
+          "Free parking"
+        ]
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Kumar's",
+        "location": "T. Nagar",
+        "cuisine": "South Indian",
+        "price_range": "₹/₹₹/₹₹₹",
+        "estimated_cost": 800.0
+      },
+      {
+        "name": "Anjappar",
+        "location": "Adyar",
+        "cuisine": "Chettinad",
+        "price_range": "₹/₹₹/₹₹₹",
+        "estimated_cost": 1200.0
+      },
+      {
+        "name": "The Glass House",
+        "location": "Besant Nagar",
+        "cuisine": "Italian",
+        "price_range": "₹/₹₹/₹₹₹",
+        "estimated_cost": 1500.0
+      }
+    ],
+    "recommendations": {
+      "activities": [
+        {
+          "name": "Beachside Sunset Walk",
+          "location": "Besant Nagar Beach, Chennai",
+          "category": "Outdoor",
+          "estimated_cost": 0.0,
+          "duration": "2 hours",
+          "description": "Enjoy a leisurely stroll along the beach, taking in the sea breeze and local street food stalls, even with moderate drizzle."
+        },
+        {
+          "name": "South Indian Cooking Class",
+          "location": "Local Cooking School, Chennai",
+          "category": "Indoor",
+          "estimated_cost": 2000.0,
+          "duration": "3 hours",
+          "description": "Learn to prepare traditional South Indian dishes under the guidance of a local chef, perfect for a rainy day."
+        }
+      ],
+      "attractions": [
+        {
+          "name": "Besant Nagar Beach",
+          "location": "Besant Nagar, Chennai",
+          "category": "Beach",
+          "estimated_cost": 0.0,
+          "duration": "2 hours",
+          "description": "A popular beach spot with scenic views, ideal for a relaxed walk.",
+          "available_days": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opening_hours": "Open 24 hours"
+        },
+        {
+          "name": "Madras Museum",
+          "location": "T. Nagar, Chennai",
+          "category": "Museum",
+          "estimated_cost": 200.0,
+          "duration": "2 hours",
+          "description": "Explore the rich cultural heritage of Chennai through exhibits on art, history, and archaeology.",
+          "available_days": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opening_hours": "10:00 AM - 5:00 PM"
+        }
+      ],
+      "restaurants": [
+        {
+          "name": "Anjappar",
+          "location": "Adyar",
+          "cuisine": "Chettinad",
+          "price_range": "₹/₹₹/₹₹₹",
+          "estimated_cost": 1200.0
+        },
+        {
+          "name": "The Glass House",
+          "location": "Besant Nagar",
+          "cuisine": "Italian",
+          "price_range": "₹/₹₹/₹₹₹",
+          "estimated_cost": 1500.0
+        }
+      ]
+    },
+    "selected_options": {
+      "outbound_transport": {
+        "mode": "Flight",
+        "provider": "IndiGo",
+        "departure": "Kolkata",
+        "arrival": "Chennai",
+        "duration": "2h 45m",
+        "estimated_cost": 12000.0
+      },
+      "return_transport": {
+        "mode": "Flight",
+        "provider": "Air India",
+        "departure": "Chennai",
+        "arrival": "Kolkata",
+        "duration": "2h 45m",
+        "estimated_cost": 11000.0
+      },
+      "accommodation": {
+        "name": "Sea Breeze Resort",
+        "location": "Thiruvanmiyur, Chennai",
+        "rating": 4.0,
+        "price_per_night": 8500.0,
+        "total_cost": 17000.0,
+        "amenities": [
+          "Wi-Fi",
+          "Breakfast",
+          "Beach access",
+          "Free parking"
+        ]
+      },
+      "activities": [
+        {
+          "name": "Beachside Sunset Walk",
+          "location": "Besant Nagar Beach, Chennai",
+          "category": "Outdoor",
+          "estimated_cost": 0.0,
+          "duration": "2 hours",
+          "description": "Enjoy a leisurely stroll along the beach, taking in the sea breeze and local street food stalls, even with moderate drizzle."
+        }
+      ],
+      "attractions": [
+        {
+          "name": "Madras Museum",
+          "location": "T. Nagar, Chennai",
+          "category": "Museum",
+          "estimated_cost": 200.0,
+          "duration": "2 hours",
+          "description": "Explore the rich cultural heritage of Chennai through exhibits on art, history, and archaeology.",
+          "available_days": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opening_hours": "10:00 AM - 5:00 PM"
+        }
+      ],
+      "restaurants": [
+        {
+          "name": "Anjappar",
+          "location": "Adyar",
+          "cuisine": "Chettinad",
+          "price_range": "₹/₹₹/₹₹₹",
+          "estimated_cost": 1200.0
+        }
+      ]
+    },
+    "packing_list": [
+      "Compact umbrella",
+      "Waterproof rain jacket",
+      "Light breathable T-shirts",
+      "Shorts",
+      "Comfortable walking shoes",
+      "Flip-flops or sandals",
+      "Swimwear",
+      "Beach towel",
+      "Sunscreen SPF 50",
+      "Sunglasses",
+      "Travel documents and ID",
+      "Phone charger and power bank"
+    ],
+    "final_itinerary": {
+      "destination": "chennai",
+      "start_date": "2026-09-28",
+      "end_date": "2026-09-30",
+      "travelers": 2,
+      "days": [
+        {
+          "date": "2026-09-28",
+          "weather": {
+            "temperature_c": 35.7,
+            "condition": "Moderate Drizzle",
+            "rain_probability": 76
+          },
+          "morning": {
+            "type": "No additional activity selected",
+            "name": "No additional activity selected",
+            "location": "",
+            "duration": ""
+          },
+          "afternoon": {
+            "type": "attraction",
+            "name": "Madras Museum",
+            "location": "T. Nagar, Chennai",
+            "duration": "2 hours"
+          },
+          "evening": {
+            "type": "No restaurant selected",
+            "name": "No restaurant selected",
+            "location": "",
+            "cuisine": ""
+          }
+        },
+        {
+          "date": "2026-09-29",
+          "weather": {
+            "temperature_c": 36.1,
+            "condition": "Moderate Drizzle",
+            "rain_probability": 65
+          },
+          "morning": {
+            "type": "activity",
+            "name": "Beachside Sunset Walk",
+            "location": "Besant Nagar Beach, Chennai",
+            "duration": "2 hours"
+          },
+          "afternoon": {
+            "type": "No additional attraction selected",
+            "name": "No additional attraction selected",
+            "location": "",
+            "duration": ""
+          },
+          "evening": {
+            "type": "No restaurant selected",
+            "name": "No restaurant selected",
+            "location": "",
+            "cuisine": ""
+          }
+        },
+        {
+          "date": "2026-09-30",
+          "weather": {
+            "temperature_c": 35.6,
+            "condition": "Moderate Drizzle",
+            "rain_probability": 86
+          },
+          "morning": {
+            "type": "No additional activity selected",
+            "name": "No additional activity selected",
+            "location": "",
+            "duration": ""
+          },
+          "afternoon": {
+            "type": "No additional attraction selected",
+            "name": "No additional attraction selected",
+            "location": "",
+            "duration": ""
+          },
+          "evening": {
+            "type": "restaurant",
+            "name": "Anjappar",
+            "location": "Adyar",
+            "cuisine": "Chettinad"
+          }
+        }
+      ]
+    },
+    "budget_summary": {
+      "currency": "INR",
+      "budget": 50000.0,
+      "breakdown": {
+        "transport": 46000.0,
+        "accommodation": 17000.0,
+        "activities": 0.0,
+        "attractions": 400.0,
+        "restaurants": 2400.0
+      },
+      "estimated_total": 65800.0,
+      "remaining_budget": -15800.0,
+      "within_budget": false
+    }
+  }
+}

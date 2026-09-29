@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+streamlit
+
+langgraph
+langchain
+langchain-groq
+
+pydantic
+pydantic-settings
+python-dotenv
+
+requests
+httpx

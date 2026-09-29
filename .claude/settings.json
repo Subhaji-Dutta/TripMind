@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(python --version)",
+      "PowerShell(python -c \"import fastapi, langgraph, langchain_groq, pydantic, uvicorn; print\\('core deps OK'\\)\")",
+      "PowerShell(python -c \"import httpx; print\\('httpx OK'\\)\")",
+      "PowerShell(python -m py_compile \"d:\\\\PycharmProjects\\\\tripmind\\\\frontend\\\\app.py\")",
+      "Bash(./.venv/Scripts/python.exe -c \"import ast; ast.parse\\(open\\('frontend/app.py'\\).read\\(\\)\\)\")",
+      "Bash(./.venv/Scripts/python.exe -c \"import ast; ast.parse\\(open\\('frontend/app.py', encoding='utf-8'\\).read\\(\\)\\); print\\('OK'\\)\")",
+      "Bash(python -c \"import ast,sys; ast.parse\\(open\\('frontend/app.py', encoding='utf-8'\\).read\\(\\), filename='app.py'\\); print\\('PARSE OK'\\)\")",
+      "Bash(python -c \"import ast; ast.parse\\(open\\('frontend/app.py', encoding='utf-8'\\).read\\(\\), filename='app.py'\\); print\\('PARSE OK'\\)\")"
+    ]
+  }
+}
