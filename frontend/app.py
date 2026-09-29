@@ -16,7 +16,7 @@ st.set_page_config(
 
 BACKEND_URL = os.getenv(
     "TRIPMIND_BACKEND_URL",
-    "http://127.0.0.1:8000",
+    "https://tripmind-backend.vercel.app/",
 ).rstrip("/")
 
 
